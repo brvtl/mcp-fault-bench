@@ -9,7 +9,7 @@ mcp-fault-bench = "mcp_fault_bench.__main__:main"
 chaosmonkey = "mcp_fault_bench.__main__:main"
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "matplotlib>=3.8"]
 media = ["playwright>=1.50", "matplotlib>=3.8"]
 
 [tool.pytest.ini_options]

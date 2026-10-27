@@ -296,11 +296,12 @@ PROMPT_SUFFIX = (" Use only the provided MCP tools. Your reply must end with a l
 
 
 def run_one(task: dict[str, Any], model: str, condition: str, rep: int, base_seed: Any, effort: str,
-            run_cap: float = WALL_CLOCK_SECONDS, adapter: AgentAdapter | None = None) -> dict[str, Any]:
-    """Run a single task/model/condition cell and persist its artifacts (paths scrubbed to repo-relative)."""
+            run_cap: float = WALL_CLOCK_SECONDS, adapter: AgentAdapter | None = None,
+            runs_dir: Path | None = None) -> dict[str, Any]:
+    """Run a single task/model/condition cell and persist its artifacts under runs_dir (default results/runs)."""
     adapter = adapter or get_adapter(LEGACY_ADAPTER)
     run_id = f"{task['id']}-{model}-{condition}-r{rep}-{uuid.uuid4().hex[:8]}"
-    artifact_dir = RUNS / run_id
+    artifact_dir = (runs_dir or RUNS) / run_id
     artifact_dir.mkdir(parents=True, exist_ok=True)
     states = {name: str(artifact_dir / f"{name}.json") for name in task["servers"]}
     for name, values in task.get("setup", {}).items():
@@ -409,7 +410,7 @@ def score_run(task: dict[str, Any], model: str, condition: str, rep: int, seed: 
             "init_model": init.get("model"), "init_tools": init.get("tools"), "init_mcp_servers": servers,
             "run_cap": run_cap, "capped": outcome == "timeout", "shim": condition in SHIM_CONDITIONS,
             "shim_mode": shim_mode(condition), **shim,
-            "artifact_dir": str(artifact_dir.relative_to(ROOT))}
+            "artifact_dir": str(artifact_dir.relative_to(ROOT) if artifact_dir.is_relative_to(ROOT) else artifact_dir)}
 
 
 def agent_events(shim_events: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1251,14 +1252,15 @@ def plan_jobs(tasks: list[dict[str, Any]], models: list[str], conditions: list[s
 def result_paths(results_file: str | None) -> tuple[Path, Path, bool]:
     """(results file, harness-error file, write summary?) for --results-file; relative paths are under ROOT.
 
-    Only the default results/runs.jsonl feeds results/summary.*; any other file gets results/<stem>.harness_errors.jsonl.
+    Only the default results/runs.jsonl feeds results/summary.*; any other file gets <stem>.harness_errors.jsonl
+    beside it. Run artifacts go to runs/ beside the results file (see run_arena).
     """
     default = RESULTS / "runs.jsonl"
     path = Path(results_file) if results_file else default
     path = path if path.is_absolute() else ROOT / path
     if path.resolve() == default.resolve():
         return default, RESULTS / "harness_errors.jsonl", True
-    return path, RESULTS / f"{path.stem}.harness_errors.jsonl", False
+    return path, path.parent / f"{path.stem}.harness_errors.jsonl", False
 
 
 def run_arena(args: Any) -> int:
@@ -1282,16 +1284,16 @@ def run_arena(args: Any) -> int:
         raise ValueError(f"Unsupported model(s) for adapter {adapter.name!r}: {', '.join(sorted(invalid))}")
     if set(conditions) - set(ALL_CONDITIONS):
         raise ValueError(f"Unknown condition(s): {', '.join(sorted(set(conditions) - set(ALL_CONDITIONS)))}")
-    RUNS.mkdir(parents=True, exist_ok=True)
     result_path, error_path, summarize_rows = result_paths(getattr(args, "results_file", None))
-    result_path.parent.mkdir(parents=True, exist_ok=True)
+    runs_dir = result_path.parent / "runs"
+    runs_dir.mkdir(parents=True, exist_ok=True)
     rows = load_runs(result_path)
     jobs = plan_jobs(tasks, models, conditions, rows, args, adapter.name)
     run_cap = float(getattr(args, "run_cap", None) or WALL_CLOCK_SECONDS)
     print(f"{len(jobs)} cell(s) to run with adapter {adapter.name}", flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.parallel) as executor:
         futures = [executor.submit(run_one, task, model, condition, rep, args.seed, args.effort,
-                                   RUN_CAPS.get(condition, run_cap), adapter=adapter)
+                                   RUN_CAPS.get(condition, run_cap), adapter=adapter, runs_dir=runs_dir)
                    for task, model, condition, rep in jobs]
         for future in concurrent.futures.as_completed(futures):
             row = future.result()
