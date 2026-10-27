@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:restock_cost:6",
+        "--log",
+        "./results/runs/restock_cost-claude-haiku-5-5-clean-r6-f3eef264/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-haiku-5-5-clean-r6-f3eef264/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:restock_cost:6",
+        "--log",
+        "./results/runs/restock_cost-claude-haiku-5-5-clean-r6-f3eef264/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-haiku-5-5-clean-r6-f3eef264/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

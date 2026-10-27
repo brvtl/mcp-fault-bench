@@ -1,0 +1,2 @@
+{"ts":1793087158.0938256,"run_id":"66f3eb47-4fdb-470c-b388-fa85c416de94","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.00011852200077555608,"outcome":"ok"}
+{"ts":1793087161.755415,"run_id":"66f3eb47-4fdb-470c-b388-fa85c416de94","method":"tools/call","tool":"search_products","args":{"category":"tea"},"fault":"error","persistence":"permanent","latency":0.0,"outcome":"faulted","draw_index":0,"entry":{"paper_type":"OP4_errorMessage","persistence":"permanent","label":"OP4/permanent"},"fired":true}

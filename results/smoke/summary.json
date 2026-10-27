@@ -1,0 +1,83 @@
+{
+  "n_runs": 1,
+  "reps": 1,
+  "conditions": [
+    "chaos_scoped"
+  ],
+  "tasks": [
+    "note_summary"
+  ],
+  "models": [
+    {
+      "model": "claude-haiku-5-5",
+      "effort": [
+        "medium"
+      ],
+      "conditions": {
+        "chaos_scoped": {
+          "n": 1,
+          "successes": 0,
+          "success_rate": 0.0,
+          "ci95": [
+            0.0,
+            0.7935
+          ],
+          "mean_tool_calls": 6.0,
+          "mean_retries": 4.0,
+          "mean_faults_fired": 4.0,
+          "mean_wall_time": 9.69,
+          "timeouts": 0,
+          "builtin_tool_runs": 0
+        }
+      },
+      "resilience_ratio": null,
+      "scoped_resilience_ratio": null,
+      "models_seen": [
+        "claude-haiku-5-5"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "model": "claude-haiku-5-5",
+      "task": "note_summary",
+      "condition": "chaos_scoped",
+      "n": 1,
+      "successes": 0,
+      "incomplete": false
+    }
+  ],
+  "fault_families": {
+    "chaos_scoped": {
+      "OP4/permanent": {
+        "claude-haiku-5-5": {
+          "n": 1,
+          "successes": 0
+        }
+      }
+    }
+  },
+  "paired": {
+    "note_summary#1": {
+      "claude-haiku-5-5": {
+        "chaos_scoped": {
+          "success": false,
+          "outcome": "fail",
+          "first_entry": "OP4/permanent",
+          "target_tool": "get_note"
+        }
+      }
+    }
+  },
+  "models_used": {
+    "claude-haiku-5-5": {
+      "runs": 1,
+      "inputTokens": 10,
+      "outputTokens": 861,
+      "cacheReadInputTokens": 18841,
+      "cacheCreationInputTokens": 5133,
+      "thinkingTokens": 246,
+      "costUSD": 0.0016465100000000001
+    }
+  }
+}

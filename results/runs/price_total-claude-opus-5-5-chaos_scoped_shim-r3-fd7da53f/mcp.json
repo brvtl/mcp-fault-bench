@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:price_total:3",
+        "--target",
+        "get_price_v2",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/price_total-claude-opus-5-5-chaos_scoped_shim-r3-fd7da53f/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/price_total-claude-opus-5-5-chaos_scoped_shim-r3-fd7da53f/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+{"ts":1793086977.8244917,"run_id":"77876df5-1a05-4cb2-8047-5c78d7427c74","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.0002619340011733584,"outcome":"ok"}
+{"ts":1793086985.0106215,"run_id":"77876df5-1a05-4cb2-8047-5c78d7427c74","method":"tools/call","tool":"list_notes","args":{},"fault":null,"persistence":null,"latency":0.0003101620004599681,"outcome":"ok","draw_index":null,"entry":null,"fired":false}

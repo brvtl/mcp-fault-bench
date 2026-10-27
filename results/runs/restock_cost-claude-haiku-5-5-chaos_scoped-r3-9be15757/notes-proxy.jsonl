@@ -1,0 +1,2 @@
+{"ts":1793086210.132528,"run_id":"40172f13-68de-4033-a42e-ca3169358c44","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.00015045899999677204,"outcome":"ok"}
+{"ts":1793086221.258203,"run_id":"40172f13-68de-4033-a42e-ca3169358c44","method":"tools/call","tool":"put_note","args":{"key":"restock-cost","value":"184.48"},"fault":"error","persistence":"permanent","latency":0.0,"outcome":"faulted","draw_index":0,"entry":{"paper_type":"OP4_errorMessage","persistence":"permanent","label":"OP4/permanent"},"fired":true}

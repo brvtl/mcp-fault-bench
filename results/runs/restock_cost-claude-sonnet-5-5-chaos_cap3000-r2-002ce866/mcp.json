@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:restock_cost:2",
+        "--log",
+        "./results/runs/restock_cost-claude-sonnet-5-5-chaos_cap3000-r2-002ce866/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-sonnet-5-5-chaos_cap3000-r2-002ce866/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:restock_cost:2",
+        "--log",
+        "./results/runs/restock_cost-claude-sonnet-5-5-chaos_cap3000-r2-002ce866/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-sonnet-5-5-chaos_cap3000-r2-002ce866/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

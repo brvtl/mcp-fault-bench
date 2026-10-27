@@ -1,0 +1,58 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:budget_order:5",
+        "--target",
+        "place_order",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/budget_order-claude-haiku-5-5-chaos_scoped_shim-r5-70a109f9/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/budget_order-claude-haiku-5-5-chaos_scoped_shim-r5-70a109f9/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:budget_order:5",
+        "--target",
+        "place_order",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/budget_order-claude-haiku-5-5-chaos_scoped_shim-r5-70a109f9/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/budget_order-claude-haiku-5-5-chaos_scoped_shim-r5-70a109f9/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

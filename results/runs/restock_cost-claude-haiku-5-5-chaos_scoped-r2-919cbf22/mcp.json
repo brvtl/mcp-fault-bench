@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:restock_cost:2",
+        "--target",
+        "get_stock",
+        "--log",
+        "./results/runs/restock_cost-claude-haiku-5-5-chaos_scoped-r2-919cbf22/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-haiku-5-5-chaos_scoped-r2-919cbf22/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:restock_cost:2",
+        "--target",
+        "get_stock",
+        "--log",
+        "./results/runs/restock_cost-claude-haiku-5-5-chaos_scoped-r2-919cbf22/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-haiku-5-5-chaos_scoped-r2-919cbf22/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

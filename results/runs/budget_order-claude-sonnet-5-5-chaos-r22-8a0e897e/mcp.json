@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:budget_order:22",
+        "--log",
+        "./results/runs/budget_order-claude-sonnet-5-5-chaos-r22-8a0e897e/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/budget_order-claude-sonnet-5-5-chaos-r22-8a0e897e/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:budget_order:22",
+        "--log",
+        "./results/runs/budget_order-claude-sonnet-5-5-chaos-r22-8a0e897e/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/budget_order-claude-sonnet-5-5-chaos-r22-8a0e897e/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

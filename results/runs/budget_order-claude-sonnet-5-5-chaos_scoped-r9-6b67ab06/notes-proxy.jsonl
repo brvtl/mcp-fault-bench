@@ -1,0 +1,2 @@
+{"ts":1793087553.7829719,"run_id":"aa207117-4ae3-4e7d-96f2-49590379a5cb","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":9.033800051838625e-05,"outcome":"ok"}
+{"ts":1793087555.5378718,"run_id":"aa207117-4ae3-4e7d-96f2-49590379a5cb","method":"tools/call","tool":"get_note","args":{"key":"coffee-budget"},"fault":null,"persistence":null,"latency":0.00039701100104139186,"outcome":"ok","draw_index":null,"entry":null,"fired":false}

@@ -1,0 +1,1 @@
+Using the inventory tools, look up the unit prices of SKU-639, SKU-916, SKU-994 and SKU-473. Compute the total cost of buying 2 x SKU-639, 1 x SKU-916, 3 x SKU-994 and 1 x SKU-473. End your reply with a line `FINAL: <total with two decimals>`. Use only the provided MCP tools. Your reply must end with a line that starts with `FINAL:` followed by the answer.

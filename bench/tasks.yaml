@@ -1,0 +1,75 @@
+# Expected values are recomputed from the server tables in tests/test_tasks.py, so they cannot drift.
+# fault_targets: the tools each task depends on, in call order; chaos_scoped picks one per (task, rep).
+tasks:
+  - id: price_total
+    servers: [inventory]
+    fault_targets: [get_price, get_price_v2]
+    prompt: >-
+      Using the inventory tools, look up the unit prices of SKU-639, SKU-916, SKU-994 and SKU-473.
+      Compute the total cost of buying 2 x SKU-639, 1 x SKU-916, 3 x SKU-994 and 1 x SKU-473.
+      End your reply with a line `FINAL: <total with two decimals>`.
+    grade: {type: answer_number, value: 56.55}
+
+  - id: cheapest_in_stock_order
+    servers: [inventory]
+    fault_targets: [search_products, get_stock, get_price, place_order, list_orders]
+    prompt: >-
+      Using the inventory tools, find the cheapest tea product that is currently in stock (stock > 0).
+      Place exactly one order for 3 units of it, then call list_orders to confirm the order exists.
+      Do not place any other orders. End your reply with a line `FINAL: <SKU>`.
+    grade: {type: orders_exact, orders: [{sku: SKU-562, quantity: 3}]}
+
+  - id: note_summary
+    servers: [notes]
+    fault_targets: [get_note, put_note, list_notes]
+    setup:
+      notes:
+        region-north: "units: 1284"
+        region-south: "units: 1517"
+        region-west: "units: 977"
+        memo: "weekly sync moved to Thursday"
+    prompt: >-
+      Using the notes tools, read the notes region-north, region-south and region-west; each holds a unit count.
+      Store a note with key `units-summary` and value exactly `total=<sum of the three counts> max=<key of the
+      region with the most units>` (for example `total=10 max=region-east`). End your reply with a line
+      `FINAL: <the value you stored>`.
+    grade: {type: note, key: units-summary, value: "total=3778 max=region-south"}
+
+  - id: cross_server_total
+    servers: [notes, inventory]
+    fault_targets: [get_note, get_price, put_note]
+    setup:
+      notes:
+        order-list: "SKU-208 x2, SKU-562 x3, SKU-857 x1, SKU-725 x4"
+    prompt: >-
+      The note with key `order-list` lists SKUs with quantities. Look up each SKU's unit price with the inventory
+      tools and compute the total cost of the whole list. Store the total in a note with key `order-total`, formatted
+      with two decimals and nothing else (for example `12.30`). End your reply with a line `FINAL: <total>`.
+    grade: {type: note, key: order-total, value: "59.49"}
+
+  - id: restock_cost
+    servers: [notes, inventory]
+    fault_targets: [search_products, get_stock, get_price, put_note]
+    prompt: >-
+      For every product in the cocoa and matcha categories, check its stock. Every product with stock below 5 must
+      be restocked to 10 units; its restock cost is (10 - stock) x unit price. Sum the restock cost over all such
+      products and store the sum in a note with key `restock-cost`, formatted with two decimals and nothing else.
+      End your reply with a line `FINAL: <sum>`.
+    grade: {type: note, key: restock-cost, value: "184.48"}
+
+  - id: budget_order
+    servers: [notes, inventory]
+    fault_targets: [get_note, search_products, get_stock, get_price, place_order, put_note]
+    setup:
+      notes:
+        coffee-budget: "41.50"
+    prompt: >-
+      The note with key `coffee-budget` holds a budget in dollars. Find the cheapest coffee product that is in stock
+      and place one order for the largest whole quantity whose total price fits within the budget (and does not
+      exceed the stock). Place no other orders. Then store a note with key `budget-order` and value exactly
+      `<SKU> x<quantity>` (for example `SKU-100 x2`). End your reply with a line `FINAL: <SKU> x<quantity>`.
+    grade:
+      type: all
+      checks:
+        - {type: orders_exact, orders: [{sku: SKU-857, quantity: 6}]}
+        - {type: note, key: budget-order, value: "SKU-857 x6"}

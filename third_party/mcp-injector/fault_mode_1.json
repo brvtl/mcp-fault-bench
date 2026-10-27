@@ -1,0 +1,27 @@
+{
+  "fault_mode": [
+    {"type":"OP5_delay","probability":0.0037,"targets":["global"],"parameters":{"duration":30},"persistence":{"type":"INTERMITTENT","activation_p":0.0975,"deactivation_p":0.3}},
+    {"type":"OP5_delay","probability":0.0114,"targets":["global"],"parameters":{"duration":30},"persistence":{"type":"PERMANENT"}},
+    {"type":"OP5_delay","probability":0.0001,"targets":["global"],"parameters":{"duration":30},"persistence":{"type":"TRANSIENT","activation_p":1.0}},
+
+    {"type":"OP4_errorMessage","probability":0.0484,"targets":["global"],"parameters":{},"persistence":{"type":"INTERMITTENT","activation_p":0.0221,"deactivation_p":0.3}},
+    {"type":"OP4_errorMessage","probability":0.6565,"targets":["global"],"parameters":{},"persistence":{"type":"PERMANENT"}},
+    {"type":"OP4_errorMessage","probability":0.007,"targets":["global"],"parameters":{},"persistence":{"type":"TRANSIENT","activation_p":1.0}},
+
+    {"type":"OP2_randomValue","probability":0.0112,"targets":["global"],"parameters":{"probability_per_word":0.35},"persistence":{"type":"INTERMITTENT","activation_p":0.0268,"deactivation_p":0.3}},
+    {"type":"OP2_randomValue","probability":0.1254,"targets":["global"],"parameters":{"probability_per_word":0.35},"persistence":{"type":"PERMANENT"}},
+    {"type":"OP2_randomValue","probability":0.0001,"targets":["global"],"parameters":{"probability_per_word":0.35},"persistence":{"type":"TRANSIENT","activation_p":1.0}},
+
+    {"type":"OP3_randomWrongType","probability":0.0034,"targets":["global"],"parameters":{},"persistence":{"type":"INTERMITTENT","activation_p":0.0276,"deactivation_p":0.3}},
+    {"type":"OP3_randomWrongType","probability":0.037,"targets":["global"],"parameters":{},"persistence":{"type":"PERMANENT"}},
+    {"type":"OP3_randomWrongType","probability":0.0001,"targets":["global"],"parameters":{},"persistence":{"type":"TRANSIENT","activation_p":1.0}},
+
+    {"type":"OP1_smallDelta","probability":0.0011,"targets":["global"],"parameters":{"delta_ratio":0.05,"probability_per_word":0.08},"persistence":{"type":"INTERMITTENT","activation_p":0.0254,"deactivation_p":0.3}},
+    {"type":"OP1_smallDelta","probability":0.0128,"targets":["global"],"parameters":{"delta_ratio":0.05,"probability_per_word":0.08},"persistence":{"type":"PERMANENT"}},
+    {"type":"OP1_smallDelta","probability":0.0,"targets":["global"],"parameters":{"delta_ratio":0.05,"probability_per_word":0.08},"persistence":{"type":"TRANSIENT","activation_p":1.0}},
+
+    {"type":"OP6_dropCall","probability":0.0121,"targets":["global"],"parameters":{},"persistence":{"type":"INTERMITTENT","activation_p":0.052,"deactivation_p":0.3}},
+    {"type":"OP6_dropCall","probability":0.0697,"targets":["global"],"parameters":{},"persistence":{"type":"PERMANENT"}},
+    {"type":"OP6_dropCall","probability":0.0003,"targets":["global"],"parameters":{},"persistence":{"type":"TRANSIENT","activation_p":1.0}}
+  ]
+}

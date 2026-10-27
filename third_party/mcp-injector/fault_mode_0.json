@@ -1,0 +1,11 @@
+{
+  "fault_mode": [
+    {
+      "type": "OP0_nullInjector",
+      "targets": ["global"],
+      "probability": 1,
+      "parameters": {},
+      "persistence": { "type": "PERMANENT"}
+    }
+  ]
+}

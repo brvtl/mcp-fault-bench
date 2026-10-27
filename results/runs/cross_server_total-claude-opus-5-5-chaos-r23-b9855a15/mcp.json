@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:cross_server_total:23",
+        "--log",
+        "./results/runs/cross_server_total-claude-opus-5-5-chaos-r23-b9855a15/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-opus-5-5-chaos-r23-b9855a15/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:cross_server_total:23",
+        "--log",
+        "./results/runs/cross_server_total-claude-opus-5-5-chaos-r23-b9855a15/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-opus-5-5-chaos-r23-b9855a15/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

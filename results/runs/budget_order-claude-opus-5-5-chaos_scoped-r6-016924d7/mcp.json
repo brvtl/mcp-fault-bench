@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:budget_order:6",
+        "--target",
+        "place_order",
+        "--log",
+        "./results/runs/budget_order-claude-opus-5-5-chaos_scoped-r6-016924d7/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/budget_order-claude-opus-5-5-chaos_scoped-r6-016924d7/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:budget_order:6",
+        "--target",
+        "place_order",
+        "--log",
+        "./results/runs/budget_order-claude-opus-5-5-chaos_scoped-r6-016924d7/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/budget_order-claude-opus-5-5-chaos_scoped-r6-016924d7/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:cross_server_total:3",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/cross_server_total-claude-haiku-5-5-clean_shim-r3-863aee20/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-haiku-5-5-clean_shim-r3-863aee20/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:cross_server_total:3",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/cross_server_total-claude-haiku-5-5-clean_shim-r3-863aee20/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-haiku-5-5-clean_shim-r3-863aee20/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

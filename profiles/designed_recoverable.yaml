@@ -1,0 +1,77 @@
+seed: 42
+faults:
+  # OP4: this endpoint always fails; get_price_v2 is the documented escape hatch.
+  - op: error
+    tools: [get_price]
+    persistence: permanent
+    activation_p: 1.0
+    params: {style: tool_result, message: "Access Denied to: get_price (service unavailable 503)"}
+
+  # OP2: corrupt one fallback response so agents must inspect and retry it.
+  - op: random_value
+    tools: [get_price_v2]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+
+  # OP5: realistic intermittent latency, bounded below the arena timeout.
+  - op: delay
+    tools: [search_products, get_stock, get_note]
+    persistence: intermittent
+    activation_p: 0.45
+    deactivation_p: 0.4
+    params: {min_seconds: 3.0, max_seconds: 5.0}
+
+  # OP6: one list_orders response is suppressed after a ten-second wait (arena timeout: eight seconds).
+  - op: timeout
+    tools: [list_orders]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+    params: {seconds: 10.0}
+
+  # OP3: one later fallback response changes its text payload's shape.
+  - op: wrong_type
+    tools: [get_price_v2]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+
+  # OP4: fail the first note write once, then allow a retry to succeed.
+  - op: error
+    tools: [put_note]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+    params: {message: "Temporary upstream 503; retry this operation"}
+
+  # Extra: announce count in tools/list and reject the old quantity argument once.
+  - op: schema_drift
+    tools: [place_order]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+    params: {rename: quantity, to: count}
+
+  # Extra: send one malformed line followed by a valid JSON-RPC error for the same id.
+  - op: malformed_json
+    tools: [get_stock]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+
+  # Extra: shorten the first note list response; persisted state remains intact.
+  - op: truncate
+    tools: [list_notes]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+    params: {percent: 50}
+
+  # Extra: truncate note lookup text once; a retry returns the full value.
+  - op: truncate
+    tools: [get_note]
+    persistence: transient
+    activation_p: 1.0
+    max_fires: 1
+    params: {percent: 55}

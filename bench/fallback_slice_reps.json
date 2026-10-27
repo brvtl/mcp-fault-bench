@@ -1,0 +1,63 @@
+{
+  "cheapest_in_stock_order": [
+    13,
+    16,
+    21,
+    23
+  ],
+  "note_summary": [
+    13,
+    14,
+    16,
+    23
+  ],
+  "cross_server_total": [
+    13,
+    14,
+    15,
+    16,
+    18,
+    20,
+    22
+  ],
+  "price_total": [
+    14,
+    17,
+    19,
+    23
+  ],
+  "budget_order": [
+    17
+  ],
+  "rule": "Walk reps 11, 12, ... (rep-major, tasks in bench/tasks.yaml order) with seed string '42:<task>:<rep>' and keep the first 20 (task, rep) pairs whose first drawn entry under profiles/paper_opp_scoped.yaml (chaosmonkey.proxy.first_draw) is OP4/permanent, whose one-tool target (bench.arena.pick_target) has a fallback in profiles/shim.yaml, and whose target is on-path: it appears in the proxy logs of every clean run with rep 1-10 of that task in results/runs.jsonl. Applied to reps 1-10 the rule gives the original 10-seed slice. It depends only on seed strings, profiles and clean-run records, never on a chaos run outcome.",
+  "skipped": {
+    "price_total": [
+      [
+        12,
+        "off-path target get_price_v2"
+      ],
+      [
+        13,
+        "off-path target get_price_v2"
+      ],
+      [
+        21,
+        "off-path target get_price_v2"
+      ]
+    ],
+    "note_summary": [
+      [
+        15,
+        "off-path target list_notes"
+      ],
+      [
+        17,
+        "off-path target list_notes"
+      ],
+      [
+        18,
+        "off-path target list_notes"
+      ]
+    ]
+  }
+}

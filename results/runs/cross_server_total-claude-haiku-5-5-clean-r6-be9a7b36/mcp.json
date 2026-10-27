@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:cross_server_total:6",
+        "--log",
+        "./results/runs/cross_server_total-claude-haiku-5-5-clean-r6-be9a7b36/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-haiku-5-5-clean-r6-be9a7b36/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:cross_server_total:6",
+        "--log",
+        "./results/runs/cross_server_total-claude-haiku-5-5-clean-r6-be9a7b36/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-haiku-5-5-clean-r6-be9a7b36/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

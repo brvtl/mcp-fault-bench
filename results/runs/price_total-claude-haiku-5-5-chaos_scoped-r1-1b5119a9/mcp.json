@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:price_total:1",
+        "--target",
+        "get_price",
+        "--log",
+        "./results/runs/price_total-claude-haiku-5-5-chaos_scoped-r1-1b5119a9/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/price_total-claude-haiku-5-5-chaos_scoped-r1-1b5119a9/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

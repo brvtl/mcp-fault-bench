@@ -1,0 +1,2 @@
+{"ts":1793086214.3324313,"run_id":"a4796874-6b51-4ab4-b025-657866c7641c","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.0005257420016278047,"outcome":"ok"}
+{"ts":1793086217.028979,"run_id":"a4796874-6b51-4ab4-b025-657866c7641c","method":"tools/call","tool":"search_products","args":{"category":"coffee"},"fault":"error","persistence":"permanent","latency":0.0,"outcome":"faulted","draw_index":0,"entry":{"paper_type":"OP4_errorMessage","persistence":"permanent","label":"OP4/permanent"},"fired":true}

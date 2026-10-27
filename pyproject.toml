@@ -1,0 +1,19 @@
+[project]
+name = "mcp-fault-bench"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = ["pyyaml>=6.0"]
+
+[project.scripts]
+mcp-fault-bench = "mcp_fault_bench.__main__:main"
+chaosmonkey = "mcp_fault_bench.__main__:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+media = ["playwright>=1.50", "matplotlib>=3.8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["mcp_fault_bench*", "chaosmonkey*", "bench*", "servers*", "web*"]

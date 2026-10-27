@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:price_total:5",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/price_total-claude-sonnet-5-5-clean_shim-r5-9f344a39/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/price_total-claude-sonnet-5-5-clean_shim-r5-9f344a39/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

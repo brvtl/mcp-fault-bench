@@ -1,0 +1,3 @@
+{"ts":1793116344.8269324,"run_id":"4e29e169-a61f-47a5-a3e1-cd56e3bbf850","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.00013746300101047382,"outcome":"ok"}
+{"ts":1793116345.7341802,"run_id":"4e29e169-a61f-47a5-a3e1-cd56e3bbf850","method":"tools/call","tool":"get_note","args":{"key":"order-list"},"fault":null,"persistence":null,"latency":0.0001643209980102256,"outcome":"ok","draw_index":null,"entry":null,"fired":false}
+{"ts":1793116350.0159488,"run_id":"4e29e169-a61f-47a5-a3e1-cd56e3bbf850","method":"tools/call","tool":"put_note","args":{"key":"order-total","value":"59.49"},"fault":null,"persistence":null,"latency":0.0011862000028486364,"outcome":"ok","draw_index":null,"entry":null,"fired":false}

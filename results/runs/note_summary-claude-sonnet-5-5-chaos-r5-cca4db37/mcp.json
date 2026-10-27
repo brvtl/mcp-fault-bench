@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:note_summary:5",
+        "--log",
+        "./results/runs/note_summary-claude-sonnet-5-5-chaos-r5-cca4db37/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/note_summary-claude-sonnet-5-5-chaos-r5-cca4db37/notes.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{"ts":1793116283.5977347,"run_id":"361ebd9f-a373-428b-b2f0-0676d3985d16","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.0001358559966320172,"outcome":"ok"}
+{"ts":1793116284.8076968,"run_id":"361ebd9f-a373-428b-b2f0-0676d3985d16","method":"tools/call","tool":"get_note","args":{"key":"order-list"},"fault":null,"persistence":null,"latency":0.0005729589975089766,"outcome":"ok","draw_index":null,"entry":null,"fired":false}
+{"ts":1793116290.3847463,"run_id":"361ebd9f-a373-428b-b2f0-0676d3985d16","method":"tools/call","tool":"put_note","args":{"key":"order-total","value":"59.49"},"fault":null,"persistence":null,"latency":0.0010212929992121644,"outcome":"ok","draw_index":null,"entry":null,"fired":false}

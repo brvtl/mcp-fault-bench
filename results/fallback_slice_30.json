@@ -1,0 +1,1579 @@
+{
+  "preregistration": "docs/preregistration-fallback-slice-30.md",
+  "sources": [
+    "results/runs.jsonl",
+    "results/fallback_slice_ext.jsonl"
+  ],
+  "test": "exact two-sided McNemar (binomial on discordant pairs), b = shim-only successes, c = no-shim-only successes; Bonferroni x3 across models = min(1, 3p)",
+  "models": {
+    "claude-opus-5-5": {
+      "original": {
+        "n": 10,
+        "no_shim_success": 8,
+        "shim_success": 10,
+        "b_shim_only": 2,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 0.5,
+        "bonferroni_x3": 1.0,
+        "no_shim_stopped_after_first_error": 1,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-opus-5-5-chaos_scoped-r2-95edea70",
+            "shim_run": "budget_order-claude-opus-5-5-chaos_scoped_shim-r2-7ff71c18"
+          },
+          {
+            "task": "budget_order",
+            "rep": 10,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-opus-5-5-chaos_scoped-r10-6fe34a6c",
+            "shim_run": "budget_order-claude-opus-5-5-chaos_scoped_shim-r10-2716fc72"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 4,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r4-d1e570ca",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r4-80bb28f9"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 5,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r5-4a536045",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r5-6720befc"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 6,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r6-306db419",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r6-4aeb93fa"
+          },
+          {
+            "task": "note_summary",
+            "rep": 1,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r1-b9ddefdf",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r1-76bb5873"
+          },
+          {
+            "task": "note_summary",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r2-8a5f2042",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r2-f1d557bf"
+          },
+          {
+            "task": "note_summary",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r9-0bbbdff8",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r9-0a357c93"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 5,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-opus-5-5-chaos_scoped-r5-6aaec4a6",
+            "shim_run": "restock_cost-claude-opus-5-5-chaos_scoped_shim-r5-3e56a783"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 9,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-opus-5-5-chaos_scoped-r9-a0a30a0f",
+            "shim_run": "restock_cost-claude-opus-5-5-chaos_scoped_shim-r9-5397725a"
+          }
+        ]
+      },
+      "new": {
+        "n": 20,
+        "no_shim_success": 19,
+        "shim_success": 20,
+        "b_shim_only": 1,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 1.0,
+        "bonferroni_x3": 1.0,
+        "no_shim_stopped_after_first_error": 0,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-opus-5-5-chaos_scoped-r17-daa10124",
+            "shim_run": "budget_order-claude-opus-5-5-chaos_scoped_shim-r17-7dd445a3"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r13-0e767037",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r13-49ec8687"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r16-6bced792",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r16-49e38c89"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 21,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r21-20f72077",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r21-0234c74d"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r23-ca35887e",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r23-62165df1"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r13-1f255bc4",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r13-7d6cd3d3"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r14-50fa349d",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r14-7014950f"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 15,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r15-38094711",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r15-66c9fc52"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r16-6eafb5e7",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r16-0987c681"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 18,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r18-be16486c",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r18-c40b2e4c"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 20,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r20-513c7ffd",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r20-41d3ccaa"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 22,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r22-c4c6a82c",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r22-74ead136"
+          },
+          {
+            "task": "note_summary",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r13-e69a49a5",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r13-2050422d"
+          },
+          {
+            "task": "note_summary",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r14-8a224feb",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r14-931745d1"
+          },
+          {
+            "task": "note_summary",
+            "rep": 16,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r16-638ac27d",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r16-02569367"
+          },
+          {
+            "task": "note_summary",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r23-7e087cc5",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r23-7ac83fbf"
+          },
+          {
+            "task": "price_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r14-b44e2334",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r14-4cf029e1"
+          },
+          {
+            "task": "price_total",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r17-9dcd02c8",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r17-3fe608c7"
+          },
+          {
+            "task": "price_total",
+            "rep": 19,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r19-33a5b318",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r19-b8badd15"
+          },
+          {
+            "task": "price_total",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r23-b23714c7",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r23-d96272ec"
+          }
+        ]
+      },
+      "all": {
+        "n": 30,
+        "no_shim_success": 27,
+        "shim_success": 30,
+        "b_shim_only": 3,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 0.25,
+        "bonferroni_x3": 0.75,
+        "no_shim_stopped_after_first_error": 1,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-opus-5-5-chaos_scoped-r2-95edea70",
+            "shim_run": "budget_order-claude-opus-5-5-chaos_scoped_shim-r2-7ff71c18"
+          },
+          {
+            "task": "budget_order",
+            "rep": 10,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-opus-5-5-chaos_scoped-r10-6fe34a6c",
+            "shim_run": "budget_order-claude-opus-5-5-chaos_scoped_shim-r10-2716fc72"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 4,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r4-d1e570ca",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r4-80bb28f9"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 5,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r5-4a536045",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r5-6720befc"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 6,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r6-306db419",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r6-4aeb93fa"
+          },
+          {
+            "task": "note_summary",
+            "rep": 1,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r1-b9ddefdf",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r1-76bb5873"
+          },
+          {
+            "task": "note_summary",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r2-8a5f2042",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r2-f1d557bf"
+          },
+          {
+            "task": "note_summary",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r9-0bbbdff8",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r9-0a357c93"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 5,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-opus-5-5-chaos_scoped-r5-6aaec4a6",
+            "shim_run": "restock_cost-claude-opus-5-5-chaos_scoped_shim-r5-3e56a783"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 9,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-opus-5-5-chaos_scoped-r9-a0a30a0f",
+            "shim_run": "restock_cost-claude-opus-5-5-chaos_scoped_shim-r9-5397725a"
+          },
+          {
+            "task": "budget_order",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-opus-5-5-chaos_scoped-r17-daa10124",
+            "shim_run": "budget_order-claude-opus-5-5-chaos_scoped_shim-r17-7dd445a3"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r13-0e767037",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r13-49ec8687"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r16-6bced792",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r16-49e38c89"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 21,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r21-20f72077",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r21-0234c74d"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped-r23-ca35887e",
+            "shim_run": "cheapest_in_stock_order-claude-opus-5-5-chaos_scoped_shim-r23-62165df1"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r13-1f255bc4",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r13-7d6cd3d3"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r14-50fa349d",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r14-7014950f"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 15,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r15-38094711",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r15-66c9fc52"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r16-6eafb5e7",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r16-0987c681"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 18,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r18-be16486c",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r18-c40b2e4c"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 20,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r20-513c7ffd",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r20-41d3ccaa"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 22,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped-r22-c4c6a82c",
+            "shim_run": "cross_server_total-claude-opus-5-5-chaos_scoped_shim-r22-74ead136"
+          },
+          {
+            "task": "note_summary",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r13-e69a49a5",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r13-2050422d"
+          },
+          {
+            "task": "note_summary",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r14-8a224feb",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r14-931745d1"
+          },
+          {
+            "task": "note_summary",
+            "rep": 16,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r16-638ac27d",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r16-02569367"
+          },
+          {
+            "task": "note_summary",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-opus-5-5-chaos_scoped-r23-7e087cc5",
+            "shim_run": "note_summary-claude-opus-5-5-chaos_scoped_shim-r23-7ac83fbf"
+          },
+          {
+            "task": "price_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r14-b44e2334",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r14-4cf029e1"
+          },
+          {
+            "task": "price_total",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r17-9dcd02c8",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r17-3fe608c7"
+          },
+          {
+            "task": "price_total",
+            "rep": 19,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r19-33a5b318",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r19-b8badd15"
+          },
+          {
+            "task": "price_total",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-opus-5-5-chaos_scoped-r23-b23714c7",
+            "shim_run": "price_total-claude-opus-5-5-chaos_scoped_shim-r23-d96272ec"
+          }
+        ]
+      }
+    },
+    "claude-sonnet-5-5": {
+      "original": {
+        "n": 10,
+        "no_shim_success": 1,
+        "shim_success": 10,
+        "b_shim_only": 9,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 0.00390625,
+        "bonferroni_x3": 0.01171875,
+        "no_shim_stopped_after_first_error": 9,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped-r2-b185e801",
+            "shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped_shim-r2-2d0a2c1d"
+          },
+          {
+            "task": "budget_order",
+            "rep": 10,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped-r10-853e35e9",
+            "shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped_shim-r10-a4252d50"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 4,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r4-52a0f34e",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r4-1cabb7f4"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 5,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r5-27e7b90f",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r5-81b823ea"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 6,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r6-cb449113",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r6-b49e4bb0"
+          },
+          {
+            "task": "note_summary",
+            "rep": 1,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r1-a1d79f46",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r1-36f3122f"
+          },
+          {
+            "task": "note_summary",
+            "rep": 2,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r2-e1207c1a",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r2-cbdbedbc"
+          },
+          {
+            "task": "note_summary",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r9-c2d0f50f",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r9-7c787235"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 5,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped-r5-1fff3f01",
+            "shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped_shim-r5-fdc2437a"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped-r9-bdca6ab9",
+            "shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped_shim-r9-e1980185"
+          }
+        ]
+      },
+      "new": {
+        "n": 20,
+        "no_shim_success": 6,
+        "shim_success": 20,
+        "b_shim_only": 14,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 0.0001220703125,
+        "bonferroni_x3": 0.0003662109375,
+        "no_shim_stopped_after_first_error": 14,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 17,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped-r17-be2531a9",
+            "shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped_shim-r17-ea2d20ed"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r13-5c551eb7",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r13-b7df4c7b"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r16-c6278bc2",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r16-2cf72b5d"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 21,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r21-3a5aad55",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r21-f82f1532"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r23-05e64003",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r23-0e632f04"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r13-663cf14e",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r13-04c717cf"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r14-4868a99a",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r14-b91c6925"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 15,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r15-dd6c7e8e",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r15-5a8edf27"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r16-b5e49bd8",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r16-b9067cce"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 18,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r18-8ba9817d",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r18-384e2e0e"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 20,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r20-87d3037d",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r20-4c14efdc"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 22,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r22-9d873329",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r22-9e9e7e8b"
+          },
+          {
+            "task": "note_summary",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r13-80b8d16c",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r13-3fde9cce"
+          },
+          {
+            "task": "note_summary",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r14-765fabfc",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r14-e056fae9"
+          },
+          {
+            "task": "note_summary",
+            "rep": 16,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r16-8588992f",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r16-b0e01cad"
+          },
+          {
+            "task": "note_summary",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r23-e7183396",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r23-67904008"
+          },
+          {
+            "task": "price_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r14-5d643465",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r14-6d7ea1db"
+          },
+          {
+            "task": "price_total",
+            "rep": 17,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r17-683e26e7",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r17-50a03c5c"
+          },
+          {
+            "task": "price_total",
+            "rep": 19,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r19-6df77c83",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r19-a315b6ec"
+          },
+          {
+            "task": "price_total",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r23-9da2cd5a",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r23-6f871148"
+          }
+        ]
+      },
+      "all": {
+        "n": 30,
+        "no_shim_success": 7,
+        "shim_success": 30,
+        "b_shim_only": 23,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 2.384185791015625e-07,
+        "bonferroni_x3": 7.152557373046875e-07,
+        "no_shim_stopped_after_first_error": 23,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped-r2-b185e801",
+            "shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped_shim-r2-2d0a2c1d"
+          },
+          {
+            "task": "budget_order",
+            "rep": 10,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped-r10-853e35e9",
+            "shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped_shim-r10-a4252d50"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 4,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r4-52a0f34e",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r4-1cabb7f4"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 5,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r5-27e7b90f",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r5-81b823ea"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 6,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r6-cb449113",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r6-b49e4bb0"
+          },
+          {
+            "task": "note_summary",
+            "rep": 1,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r1-a1d79f46",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r1-36f3122f"
+          },
+          {
+            "task": "note_summary",
+            "rep": 2,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r2-e1207c1a",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r2-cbdbedbc"
+          },
+          {
+            "task": "note_summary",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r9-c2d0f50f",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r9-7c787235"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 5,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped-r5-1fff3f01",
+            "shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped_shim-r5-fdc2437a"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped-r9-bdca6ab9",
+            "shim_run": "restock_cost-claude-sonnet-5-5-chaos_scoped_shim-r9-e1980185"
+          },
+          {
+            "task": "budget_order",
+            "rep": 17,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped-r17-be2531a9",
+            "shim_run": "budget_order-claude-sonnet-5-5-chaos_scoped_shim-r17-ea2d20ed"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r13-5c551eb7",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r13-b7df4c7b"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r16-c6278bc2",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r16-2cf72b5d"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 21,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r21-3a5aad55",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r21-f82f1532"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped-r23-05e64003",
+            "shim_run": "cheapest_in_stock_order-claude-sonnet-5-5-chaos_scoped_shim-r23-0e632f04"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r13-663cf14e",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r13-04c717cf"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r14-4868a99a",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r14-b91c6925"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 15,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r15-dd6c7e8e",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r15-5a8edf27"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r16-b5e49bd8",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r16-b9067cce"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 18,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r18-8ba9817d",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r18-384e2e0e"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 20,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r20-87d3037d",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r20-4c14efdc"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 22,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped-r22-9d873329",
+            "shim_run": "cross_server_total-claude-sonnet-5-5-chaos_scoped_shim-r22-9e9e7e8b"
+          },
+          {
+            "task": "note_summary",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r13-80b8d16c",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r13-3fde9cce"
+          },
+          {
+            "task": "note_summary",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r14-765fabfc",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r14-e056fae9"
+          },
+          {
+            "task": "note_summary",
+            "rep": 16,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r16-8588992f",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r16-b0e01cad"
+          },
+          {
+            "task": "note_summary",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped-r23-e7183396",
+            "shim_run": "note_summary-claude-sonnet-5-5-chaos_scoped_shim-r23-67904008"
+          },
+          {
+            "task": "price_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r14-5d643465",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r14-6d7ea1db"
+          },
+          {
+            "task": "price_total",
+            "rep": 17,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r17-683e26e7",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r17-50a03c5c"
+          },
+          {
+            "task": "price_total",
+            "rep": 19,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r19-6df77c83",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r19-a315b6ec"
+          },
+          {
+            "task": "price_total",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-sonnet-5-5-chaos_scoped-r23-9da2cd5a",
+            "shim_run": "price_total-claude-sonnet-5-5-chaos_scoped_shim-r23-6f871148"
+          }
+        ]
+      }
+    },
+    "claude-haiku-5-5": {
+      "original": {
+        "n": 10,
+        "no_shim_success": 5,
+        "shim_success": 10,
+        "b_shim_only": 5,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 0.0625,
+        "bonferroni_x3": 0.1875,
+        "no_shim_stopped_after_first_error": 0,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-haiku-5-5-chaos_scoped-r2-0de99c10",
+            "shim_run": "budget_order-claude-haiku-5-5-chaos_scoped_shim-r2-203b1126"
+          },
+          {
+            "task": "budget_order",
+            "rep": 10,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-haiku-5-5-chaos_scoped-r10-02a34ed7",
+            "shim_run": "budget_order-claude-haiku-5-5-chaos_scoped_shim-r10-f1d4d859"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 4,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r4-0b509bad",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r4-4ca64e45"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 5,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r5-e5fef15f",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r5-d719c42c"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 6,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r6-8696f95d",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r6-87aeca3c"
+          },
+          {
+            "task": "note_summary",
+            "rep": 1,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r1-f0424e10",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r1-15062d44"
+          },
+          {
+            "task": "note_summary",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r2-29c31b07",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r2-26943985"
+          },
+          {
+            "task": "note_summary",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r9-addf5cbd",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r9-4c43ceca"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 5,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped-r5-bc78930f",
+            "shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped_shim-r5-f77a2d8a"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 9,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped-r9-6e10e48f",
+            "shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped_shim-r9-fc39fd44"
+          }
+        ]
+      },
+      "new": {
+        "n": 20,
+        "no_shim_success": 11,
+        "shim_success": 20,
+        "b_shim_only": 9,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 0.00390625,
+        "bonferroni_x3": 0.01171875,
+        "no_shim_stopped_after_first_error": 0,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-haiku-5-5-chaos_scoped-r17-d4ed58d0",
+            "shim_run": "budget_order-claude-haiku-5-5-chaos_scoped_shim-r17-73a9c6aa"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r13-9cbf8f24",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r13-b895ef74"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r16-7886cc10",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r16-b5793405"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 21,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r21-0883290a",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r21-ee37dcda"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r23-c8c04fc7",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r23-d9114fa6"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r13-b08a3f99",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r13-e35f8817"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r14-ea8e88de",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r14-c640a07d"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 15,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r15-2b6dc5fc",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r15-aa0a587b"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r16-9c7c8ae8",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r16-1c3f77db"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 18,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r18-0a7d70fb",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r18-c762fbf3"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 20,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r20-9d895644",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r20-f8fcf77a"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 22,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r22-8b7a80da",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r22-4e2966fa"
+          },
+          {
+            "task": "note_summary",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r13-c932069c",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r13-d55234c3"
+          },
+          {
+            "task": "note_summary",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r14-372de1ea",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r14-d9bbd670"
+          },
+          {
+            "task": "note_summary",
+            "rep": 16,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r16-1fb07a2d",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r16-79aa61e0"
+          },
+          {
+            "task": "note_summary",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r23-944c7622",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r23-0c0a7268"
+          },
+          {
+            "task": "price_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r14-1e42a35d",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r14-624c6865"
+          },
+          {
+            "task": "price_total",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r17-e1657376",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r17-c6a61242"
+          },
+          {
+            "task": "price_total",
+            "rep": 19,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r19-0fee0179",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r19-8cb61451"
+          },
+          {
+            "task": "price_total",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r23-73a87fcf",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r23-79bd7776"
+          }
+        ]
+      },
+      "all": {
+        "n": 30,
+        "no_shim_success": 16,
+        "shim_success": 30,
+        "b_shim_only": 14,
+        "c_no_shim_only": 0,
+        "mcnemar_p": 0.0001220703125,
+        "bonferroni_x3": 0.0003662109375,
+        "no_shim_stopped_after_first_error": 0,
+        "pairs": [
+          {
+            "task": "budget_order",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-haiku-5-5-chaos_scoped-r2-0de99c10",
+            "shim_run": "budget_order-claude-haiku-5-5-chaos_scoped_shim-r2-203b1126"
+          },
+          {
+            "task": "budget_order",
+            "rep": 10,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-haiku-5-5-chaos_scoped-r10-02a34ed7",
+            "shim_run": "budget_order-claude-haiku-5-5-chaos_scoped_shim-r10-f1d4d859"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 4,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r4-0b509bad",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r4-4ca64e45"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 5,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r5-e5fef15f",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r5-d719c42c"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 6,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r6-8696f95d",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r6-87aeca3c"
+          },
+          {
+            "task": "note_summary",
+            "rep": 1,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r1-f0424e10",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r1-15062d44"
+          },
+          {
+            "task": "note_summary",
+            "rep": 2,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r2-29c31b07",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r2-26943985"
+          },
+          {
+            "task": "note_summary",
+            "rep": 9,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r9-addf5cbd",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r9-4c43ceca"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 5,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped-r5-bc78930f",
+            "shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped_shim-r5-f77a2d8a"
+          },
+          {
+            "task": "restock_cost",
+            "rep": 9,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped-r9-6e10e48f",
+            "shim_run": "restock_cost-claude-haiku-5-5-chaos_scoped_shim-r9-fc39fd44"
+          },
+          {
+            "task": "budget_order",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "budget_order-claude-haiku-5-5-chaos_scoped-r17-d4ed58d0",
+            "shim_run": "budget_order-claude-haiku-5-5-chaos_scoped_shim-r17-73a9c6aa"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 13,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r13-9cbf8f24",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r13-b895ef74"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r16-7886cc10",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r16-b5793405"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 21,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r21-0883290a",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r21-ee37dcda"
+          },
+          {
+            "task": "cheapest_in_stock_order",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped-r23-c8c04fc7",
+            "shim_run": "cheapest_in_stock_order-claude-haiku-5-5-chaos_scoped_shim-r23-d9114fa6"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r13-b08a3f99",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r13-e35f8817"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r14-ea8e88de",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r14-c640a07d"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 15,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r15-2b6dc5fc",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r15-aa0a587b"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 16,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r16-9c7c8ae8",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r16-1c3f77db"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 18,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r18-0a7d70fb",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r18-c762fbf3"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 20,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r20-9d895644",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r20-f8fcf77a"
+          },
+          {
+            "task": "cross_server_total",
+            "rep": 22,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped-r22-8b7a80da",
+            "shim_run": "cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r22-4e2966fa"
+          },
+          {
+            "task": "note_summary",
+            "rep": 13,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r13-c932069c",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r13-d55234c3"
+          },
+          {
+            "task": "note_summary",
+            "rep": 14,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r14-372de1ea",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r14-d9bbd670"
+          },
+          {
+            "task": "note_summary",
+            "rep": 16,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r16-1fb07a2d",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r16-79aa61e0"
+          },
+          {
+            "task": "note_summary",
+            "rep": 23,
+            "no_shim_success": false,
+            "shim_success": true,
+            "no_shim_run": "note_summary-claude-haiku-5-5-chaos_scoped-r23-944c7622",
+            "shim_run": "note_summary-claude-haiku-5-5-chaos_scoped_shim-r23-0c0a7268"
+          },
+          {
+            "task": "price_total",
+            "rep": 14,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r14-1e42a35d",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r14-624c6865"
+          },
+          {
+            "task": "price_total",
+            "rep": 17,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r17-e1657376",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r17-c6a61242"
+          },
+          {
+            "task": "price_total",
+            "rep": 19,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r19-0fee0179",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r19-8cb61451"
+          },
+          {
+            "task": "price_total",
+            "rep": 23,
+            "no_shim_success": true,
+            "shim_success": true,
+            "no_shim_run": "price_total-claude-haiku-5-5-chaos_scoped-r23-73a87fcf",
+            "shim_run": "price_total-claude-haiku-5-5-chaos_scoped_shim-r23-79bd7776"
+          }
+        ]
+      }
+    }
+  },
+  "left_slice_new_block": [],
+  "timeouts_new_block": {
+    "claude-opus-5-5": {
+      "chaos_scoped": 0,
+      "chaos_scoped_shim": 0
+    },
+    "claude-sonnet-5-5": {
+      "chaos_scoped": 0,
+      "chaos_scoped_shim": 0
+    },
+    "claude-haiku-5-5": {
+      "chaos_scoped": 0,
+      "chaos_scoped_shim": 0
+    }
+  }
+}

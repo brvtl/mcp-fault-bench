@@ -1,0 +1,3 @@
+{"ts":1793087515.0852227,"run_id":"c1f7a704-d327-4f02-a2ee-f50e8e0181ee","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":9.083099939743988e-05,"outcome":"ok"}
+{"ts":1793087527.8604147,"run_id":"c1f7a704-d327-4f02-a2ee-f50e8e0181ee","method":"tools/call","tool":"get_note","args":{"key":"restock-cost"},"fault":null,"persistence":null,"latency":0.0005304599999362836,"outcome":"ok"}
+{"ts":1793087529.289777,"run_id":"c1f7a704-d327-4f02-a2ee-f50e8e0181ee","method":"tools/call","tool":"put_note","args":{"key":"restock-cost","value":"184.48"},"fault":null,"persistence":null,"latency":0.0007480799995391862,"outcome":"ok"}

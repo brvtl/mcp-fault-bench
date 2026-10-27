@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:price_total:7",
+        "--log",
+        "./results/runs/price_total-claude-opus-5-5-clean-r7-ccfd0674/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/price_total-claude-opus-5-5-clean-r7-ccfd0674/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+{"ts":1793086347.9284172,"run_id":"01fd1a87-3d81-4c4a-b3c0-d320016f53e5","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":9.933000001183245e-05,"outcome":"ok"}
+{"ts":1793086358.1689672,"run_id":"01fd1a87-3d81-4c4a-b3c0-d320016f53e5","method":"tools/call","tool":"put_note","args":{"key":"restock-cost","value":"184.48"},"fault":null,"persistence":null,"latency":0.0010288679986842908,"outcome":"ok"}

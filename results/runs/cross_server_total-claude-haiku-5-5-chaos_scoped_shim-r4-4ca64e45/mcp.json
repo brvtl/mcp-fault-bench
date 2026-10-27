@@ -1,0 +1,58 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:cross_server_total:4",
+        "--target",
+        "get_note",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r4-4ca64e45/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r4-4ca64e45/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:cross_server_total:4",
+        "--target",
+        "get_note",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r4-4ca64e45/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-haiku-5-5-chaos_scoped_shim-r4-4ca64e45/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

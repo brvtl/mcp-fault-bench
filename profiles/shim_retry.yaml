@@ -1,0 +1,31 @@
+# Resilience shim, retry mode (round-2 config, kept working but not evaluated). Written up-front from the tools'
+# documented clean outputs; not tuned on evaluation draws. The evaluated *_shim conditions use profiles/shim.yaml.
+# Placement: agent -> shim -> fault injector -> server.
+mode: retry
+retry: {max_retries: 3, backoff_s: [0.5, 1.0, 2.0]}  # on isError results and on validation failures
+attempt_timeout_s: 35          # no response within 35 s: give up on that call (no retry) and return an error
+non_idempotent: [place_order]  # never auto-retried
+verify_with: {place_order: list_orders}  # named in the error text: the side effect may have happened
+validate: json                 # response text must parse as JSON and match the tool's output schema below
+# Minimal output schemas (top-level type and required keys) for every tool of servers/inventory.py and
+# servers/notes.py, derived from their clean outputs.
+schemas:
+  search_products: {type: array, items: {type: object, required: {sku: string, name: string}}}
+  get_product: {type: object, required: {sku: string, name: string, category: string}}
+  get_price: {type: object, required: {sku: string, price: number}}
+  get_price_v2: {type: object, required: {sku: string, price: number}}
+  get_stock: {type: object, required: {sku: string, stock: integer}}
+  place_order: {type: object, required: {sku: string, quantity: integer}}
+  list_orders: {type: array, items: {type: object, required: {sku: string, quantity: integer}}}
+  put_note: {type: object, required: {stored: boolean, key: string}}
+  get_note: {type: object, required: {key: string, value: [string, "null"]}}
+  list_notes: {type: array, items: string}
+  search_notes: {type: object, values: string}
+# Real alternative tools, named in the error text.
+fallbacks:
+  get_price: [get_price_v2]
+  get_price_v2: [get_price]
+  get_note: [search_notes, list_notes]
+  search_notes: [get_note]
+  list_notes: [search_notes]
+  get_product: [search_products]

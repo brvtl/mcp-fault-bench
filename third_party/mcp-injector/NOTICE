@@ -1,0 +1,80 @@
+MCP-Injector: protocol-level fault injection for tool-calling LLM agents
+Artifact accompanying Tool-Calling LLM Agents Under Realistic MCP Faults: Scale Does Not Purchase Fault Tolerance
+Advances in Neural Information Processing Systems 39 (NeurIPS 2026)
+Copyright 2026 The MCP-Injector Authors (see AUTHORS).
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+================================================================================
+Upstream attribution
+================================================================================
+
+This repository is a fork of MCP-Bench (https://github.com/accenture/mcp-bench)
+and includes substantial portions of the upstream work. The upstream project
+declares itself to be released under the Apache License, Version 2.0.
+Attribution is carried forward here in accordance with Section 4 of that
+license. Upstream portions are copyright their respective authors.
+
+Upstream citation (included for discoverability; the Apache 2.0 license does
+not require citation, but we believe it is good practice):
+
+    Wang, Zhenting and Chang, Qi and Patel, Hemani and Biju, Shashank and
+    Wu, Cheng-En and Liu, Quan and Ding, Aolin and Rezazadeh, Alireza and
+    Shah, Ankit and Bao, Yujia and Siow, Eugene.
+    "MCP-Bench: Benchmarking Tool-Using LLM Agents with Complex Real-World
+    Tasks via MCP Servers." arXiv preprint arXiv:2508.20453, 2025.
+
+Individual MCP server modules bundled under mcp_servers/ retain their own
+upstream licenses. See the LICENSE files inside each subdirectory.
+
+================================================================================
+Additions by the MCP-Injector authors
+================================================================================
+
+The following components are original contributions of the MCP-Injector
+authors (see AUTHORS) and are released under the Apache License, Version 2.0:
+
+  - The MCP-Injector proxy middleware, including the fault-injection
+    operators (OP0_nullInjector, OP1_smallDelta, OP2_randomValue,
+    OP3_randomWrongType, OP4_errorMessage, OP5_delay, OP6_dropCall)
+    and their persistence model (PERMANENT, TRANSIENT, INTERMITTENT).
+  - The calibration pipeline under mining/ (five notebooks plus supporting
+    scripts) that mines open-source MCP repositories, classifies threads,
+    and produces the empirical fault profile consumed by
+    fault_modes/fault_mode_1.json.
+  - The campaign orchestration scripts (run_campaign.sh, run_op0_baseline.sh,
+    run_no_inj_baseline.sh) and the fault-mode profile selector logic in the
+    runner.
+  - The failure audit and rerun tooling under analysis/failure_audit/.
+  - The analysis pipeline and figure-generation code under analysis/.
+
+================================================================================
+Data artifacts
+================================================================================
+
+Data artifacts released with this repository are distributed under a separate
+license (Creative Commons Attribution 4.0 International, CC-BY-4.0). Data
+artifacts are defined as:
+
+  - fault_modes/fault_mode_0.json (null profile, used as the OP0 condition).
+  - fault_modes/fault_mode_1.json (calibrated profile, used as the OPP
+    condition, empirically grounded in the mined corpus).
+  - analysis/results_formatted/fault_mode_1_fired_faults.csv (per-call
+    log of fired faults from the reported campaigns).
+  - All per-task result JSONs under analysis/results_formatted/ (the 1,350
+    cells that constitute the primary evidence base for RQ1 through RQ7).
+  - The per-thread classifier outputs of the calibration pipeline under
+    mining/ (CSV and XLSX; fields: thread identifier, deterministic
+    thread_url, repository metadata, failure_mode, failure_persistence).
+    Raw issue and PR narratives are deliberately not shipped.
+
+See DATA-LICENSE for the full CC-BY-4.0 legal text and LICENSES-README.md for
+the full path-by-path mapping of licenses.
+
+================================================================================
+Disclaimer
+================================================================================
+
+This NOTICE file is informational and does not modify the terms of the Apache
+License, Version 2.0. Nothing in this file should be construed as a license
+grant or warranty beyond what is granted in LICENSE or DATA-LICENSE.

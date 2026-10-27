@@ -1,0 +1,3 @@
+{"ts":1793086238.988091,"run_id":"d000305a-7b9c-4e4f-9c7f-9112c23f8581","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.0005155990002094768,"outcome":"ok"}
+{"ts":1793086240.2251165,"run_id":"d000305a-7b9c-4e4f-9c7f-9112c23f8581","method":"tools/call","tool":"get_note","args":{"key":"coffee-budget"},"fault":null,"persistence":null,"latency":0.0008390700004383689,"outcome":"ok"}
+{"ts":1793086245.1325328,"run_id":"d000305a-7b9c-4e4f-9c7f-9112c23f8581","method":"tools/call","tool":"put_note","args":{"key":"budget-order","value":"SKU-857 x6"},"fault":null,"persistence":null,"latency":0.0005108889999974053,"outcome":"ok"}

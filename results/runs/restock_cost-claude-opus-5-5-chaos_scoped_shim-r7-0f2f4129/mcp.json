@@ -1,0 +1,58 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:restock_cost:7",
+        "--target",
+        "get_stock",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/restock_cost-claude-opus-5-5-chaos_scoped_shim-r7-0f2f4129/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-opus-5-5-chaos_scoped_shim-r7-0f2f4129/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:restock_cost:7",
+        "--target",
+        "get_stock",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/restock_cost-claude-opus-5-5-chaos_scoped_shim-r7-0f2f4129/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-opus-5-5-chaos_scoped_shim-r7-0f2f4129/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp.yaml",
+        "--seed",
+        "42:cheapest_in_stock_order:1",
+        "--log",
+        "./results/runs/cheapest_in_stock_order-claude-opus-5-5-chaos-r1-4fab242d/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cheapest_in_stock_order-claude-opus-5-5-chaos-r1-4fab242d/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

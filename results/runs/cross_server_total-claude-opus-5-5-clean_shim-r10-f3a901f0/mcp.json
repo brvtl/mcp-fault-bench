@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:cross_server_total:10",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/cross_server_total-claude-opus-5-5-clean_shim-r10-f3a901f0/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-opus-5-5-clean_shim-r10-f3a901f0/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:cross_server_total:10",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/cross_server_total-claude-opus-5-5-clean_shim-r10-f3a901f0/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-opus-5-5-clean_shim-r10-f3a901f0/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

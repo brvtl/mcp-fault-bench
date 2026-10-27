@@ -1,0 +1,1111 @@
+[
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"inventory\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"search_products\",\"description\":\"List products in a category (tea, coffee, cocoa, matcha): SKUs and names\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"category\":{\"type\":\"string\"}},\"required\":[\"category\"]}},{\"name\":\"get_product\",\"description\":\"Get product name and category by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price\",\"description\":\"Get exact item price by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price_v2\",\"description\":\"Alternate price endpoint by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_stock\",\"description\":\"Get stock count by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"place_order\",\"description\":\"Place an order\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"},\"quantity\":{\"type\":\"integer\"}},\"required\":[\"sku\",\"quantity\"]}},{\"name\":\"list_orders\",\"description\":\"List placed orders\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_price\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_price_v2\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: search_products\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_stock\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: place_order\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":15,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: list_orders\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":16,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_product\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":17,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_price\"}],\"isError\":true}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price_v2",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_products",
+    "args": {
+     "category": "tea"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_stock",
+    "args": {
+     "sku": "SKU-562"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "place_order",
+    "args": {
+     "sku": "SKU-562",
+     "quantity": 1
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_orders",
+    "args": {},
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_product",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "permanent",
+     "label": "OP4/permanent"
+    },
+    "fired": true
+   }
+  ]
+ },
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"inventory\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"search_products\",\"description\":\"List products in a category (tea, coffee, cocoa, matcha): SKUs and names\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"category\":{\"type\":\"string\"}},\"required\":[\"category\"]}},{\"name\":\"get_product\",\"description\":\"Get product name and category by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price\",\"description\":\"Get exact item price by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price_v2\",\"description\":\"Alternate price endpoint by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_stock\",\"description\":\"Get stock count by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"place_order\",\"description\":\"Place an order\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"},\"quantity\":{\"type\":\"integer\"}},\"required\":[\"sku\",\"quantity\"]}},{\"name\":\"list_orders\",\"description\":\"List placed orders\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-731\\\", \\\"price\\\": wUrCW\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-731\\\", \\\"price\\\": uTyGZ\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"sku\\\": \\\"SKU-731\\\", \\\"name\\\": nOGWQk vThfJm {\\\"sku\\\": \\\"SKU-405\\\", \\\"name\\\": ncEgDx aDPxtlW {\\\"sku\\\": \\\"SKU-118\\\", \\\"name\\\": \\\"Juniper MKiXFEkvN {\\\"sku\\\": \\\"SKU-562\\\", gdAldQK cjbRVP lapsang\\\"}]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": fZzWLjQPmO wopdzLoU 11}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-562\\\", \\\"quantity\\\": 1}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":15,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"XzRxfPWC \\\"SKU-562\\\", \\\"quantity\\\": 1}]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":16,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"RGojqPl \\\"SKU-916\\\", mnqKfXZ \\\"Quartz IFQhRqq \\\"category\\\": \\\"cocoa\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":17,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-916\\\", puxysBiF 3.17}\"}],\"isError\":false}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price_v2",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_products",
+    "args": {
+     "category": "tea"
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_stock",
+    "args": {
+     "sku": "SKU-562"
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "place_order",
+    "args": {
+     "sku": "SKU-562",
+     "quantity": 1
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_orders",
+    "args": {},
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_product",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   }
+  ]
+ },
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"inventory\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"search_products\",\"description\":\"List products in a category (tea, coffee, cocoa, matcha): SKUs and names\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"category\":{\"type\":\"string\"}},\"required\":[\"category\"]}},{\"name\":\"get_product\",\"description\":\"Get product name and category by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price\",\"description\":\"Get exact item price by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price_v2\",\"description\":\"Alternate price endpoint by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_stock\",\"description\":\"Get stock count by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"place_order\",\"description\":\"Place an order\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"},\"quantity\":{\"type\":\"integer\"}},\"required\":[\"sku\",\"quantity\"]}},{\"name\":\"list_orders\",\"description\":\"List placed orders\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-731\\\", \\\"price\\\": 4.37}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-731\\\", \\\"price\\\": 4.37}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"sku\\\": \\\"SKU-731\\\", \\\"name\\\": \\\"Amber tea\\\"}, {\\\"sku\\\": \\\"SKU-405\\\", \\\"name\\\": \\\"Birch chai\\\"}, {\\\"sku\\\": \\\"SKU-118\\\", \\\"name\\\": \\\"Juniper oolong\\\"}, {\\\"sku\\\": \\\"SKU-562\\\", \\\"name\\\": \\\"Smoke lapsang\\\"}]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-562\\\", \\\"stock\\\": 11}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-562\\\", \\\"quantity\\\": 1}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":15,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"sku\\\": \\\"SKU-562\\\", \\\"quantity\\\": 1}]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":16,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-916\\\", \\\"name\\\": \\\"Quartz cocoa\\\", \\\"category\\\": \\\"cocoa\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":17,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-916\\\", \\\"price\\\": 3.17}\"}],\"isError\":false}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price_v2",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_products",
+    "args": {
+     "category": "tea"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_stock",
+    "args": {
+     "sku": "SKU-562"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "place_order",
+    "args": {
+     "sku": "SKU-562",
+     "quantity": 1
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_orders",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_product",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "intermittent",
+     "label": "OP4/intermittent"
+    },
+    "fired": false
+   }
+  ]
+ },
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"notes\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"put_note\",\"description\":\"Store a note under a key\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"required\":[\"key\",\"value\"]}},{\"name\":\"get_note\",\"description\":\"Read a note\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\"}},\"required\":[\"key\"]}},{\"name\":\"list_notes\",\"description\":\"List note keys\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}},{\"name\":\"search_notes\",\"description\":\"Search note text\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"query\":{\"type\":\"string\"}},\"required\":[\"query\"]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"text\\\": \\\"{\\\\\\\"stored\\\\\\\": true, \\\\\\\"key\\\\\\\": \\\\\\\"a\\\\\\\"}\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"text\\\": \\\"{\\\\\\\"key\\\\\\\": \\\\\\\"a\\\\\\\", \\\\\\\"value\\\\\\\": \\\\\\\"alpha beta\\\\\\\"}\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"text\\\": \\\"[\\\\\\\"a\\\\\\\"]\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"text\\\": \\\"{\\\\\\\"a\\\\\\\": \\\\\\\"alpha beta\\\\\\\"}\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"text\\\": \\\"{\\\\\\\"key\\\\\\\": \\\\\\\"a\\\\\\\", \\\\\\\"value\\\\\\\": \\\\\\\"alpha beta\\\\\\\"}\\\"}\"}],\"isError\":false}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "put_note",
+    "args": {
+     "key": "a",
+     "value": "alpha beta"
+    },
+    "fault": "wrong_type",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP3_randomWrongType",
+     "persistence": "permanent",
+     "label": "OP3/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_note",
+    "args": {
+     "key": "a"
+    },
+    "fault": "wrong_type",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP3_randomWrongType",
+     "persistence": "permanent",
+     "label": "OP3/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_notes",
+    "args": {},
+    "fault": "wrong_type",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP3_randomWrongType",
+     "persistence": "permanent",
+     "label": "OP3/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_notes",
+    "args": {
+     "query": "beta"
+    },
+    "fault": "wrong_type",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP3_randomWrongType",
+     "persistence": "permanent",
+     "label": "OP3/permanent"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_note",
+    "args": {
+     "key": "a"
+    },
+    "fault": "wrong_type",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP3_randomWrongType",
+     "persistence": "permanent",
+     "label": "OP3/permanent"
+    },
+    "fired": true
+   }
+  ]
+ },
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"inventory\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"search_products\",\"description\":\"List products in a category (tea, coffee, cocoa, matcha): SKUs and names\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"category\":{\"type\":\"string\"}},\"required\":[\"category\"]}},{\"name\":\"get_product\",\"description\":\"Get product name and category by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price\",\"description\":\"Get exact item price by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price_v2\",\"description\":\"Alternate price endpoint by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_stock\",\"description\":\"Get stock count by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"place_order\",\"description\":\"Place an order\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"},\"quantity\":{\"type\":\"integer\"}},\"required\":[\"sku\",\"quantity\"]}},{\"name\":\"list_orders\",\"description\":\"List placed orders\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_price\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-731\\\", \\\"price\\\": 4.37}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"sku\\\": \\\"SKU-731\\\", \\\"name\\\": \\\"Amber tea\\\"}, {\\\"sku\\\": \\\"SKU-405\\\", \\\"name\\\": \\\"Birch chai\\\"}, {\\\"sku\\\": \\\"SKU-118\\\", \\\"name\\\": \\\"Juniper oolong\\\"}, {\\\"sku\\\": \\\"SKU-562\\\", \\\"name\\\": \\\"Smoke lapsang\\\"}]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-562\\\", \\\"stock\\\": 11}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-562\\\", \\\"quantity\\\": 1}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":15,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"sku\\\": \\\"SKU-562\\\", \\\"quantity\\\": 1}]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":16,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-916\\\", \\\"name\\\": \\\"Quartz cocoa\\\", \\\"category\\\": \\\"cocoa\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":17,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-916\\\", jaxGwjWm 3.17}\"}],\"isError\":false}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": "error",
+    "persistence": "transient",
+    "outcome": "faulted",
+    "draw_index": 0,
+    "entry": {
+     "paper_type": "OP4_errorMessage",
+     "persistence": "transient",
+     "label": "OP4/transient"
+    },
+    "fired": true
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price_v2",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": null,
+    "entry": null,
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_products",
+    "args": {
+     "category": "tea"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": null,
+    "entry": null,
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_stock",
+    "args": {
+     "sku": "SKU-562"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": null,
+    "entry": null,
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "place_order",
+    "args": {
+     "sku": "SKU-562",
+     "quantity": 1
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": null,
+    "entry": null,
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_orders",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": null,
+    "entry": null,
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_product",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok",
+    "draw_index": null,
+    "entry": null,
+    "fired": false
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": "random_value",
+    "persistence": "permanent",
+    "outcome": "faulted",
+    "draw_index": 1,
+    "entry": {
+     "paper_type": "OP2_randomValue",
+     "persistence": "permanent",
+     "label": "OP2/permanent"
+    },
+    "fired": true
+   }
+  ]
+ },
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"notes\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"put_note\",\"description\":\"Store a note under a key\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"required\":[\"key\",\"value\"]}},{\"name\":\"get_note\",\"description\":\"Read a note\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\"}},\"required\":[\"key\"]}},{\"name\":\"list_notes\",\"description\":\"List note keys\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}},{\"name\":\"search_notes\",\"description\":\"Search note text\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"query\":{\"type\":\"string\"}},\"required\":[\"query\"]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"stored\\\": true, \\\"key\\\": \\\"a\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"key\\\": \\\"a\\\", \\\"value\\\": \\\"alpha beta\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[\\\"a\\\"]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"a\\\": \\\"alpha beta\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"key\\\": \\\"a\\\", \\\"value\\\": \\\"alpha beta\\\"}\"}],\"isError\":false}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "put_note",
+    "args": {
+     "key": "a",
+     "value": "alpha beta"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_note",
+    "args": {
+     "key": "a"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_notes",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_notes",
+    "args": {
+     "query": "beta"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_note",
+    "args": {
+     "key": "a"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   }
+  ]
+ },
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"inventory\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"search_products\",\"description\":\"List products in a category (tea, coffee, cocoa, matcha): SKUs and names\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"category\":{\"type\":\"string\"}},\"required\":[\"category\"]}},{\"name\":\"get_product\",\"description\":\"Get product name and category by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price\",\"description\":\"Get exact item price by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_price_v2\",\"description\":\"Alternate price endpoint by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"get_stock\",\"description\":\"Get stock count by SKU\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"}},\"required\":[\"sku\"]}},{\"name\":\"place_order\",\"description\":\"Place an order\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\"},\"quantity\":{\"type\":\"integer\"}},\"required\":[\"sku\",\"quantity\"]}},{\"name\":\"list_orders\",\"description\":\"List placed orders\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_price (service unavailable 503)\"}],\"isError\":true}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"text\\\": \\\"{\\\\\\\"sku\\\\\\\": \\\\\\\"SKU-731\\\\\\\", \\\\\\\"price\\\\\\\": 4.37}\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"sku\\\": \\\"SKU-731\\\", \\\"name\\\": \\\"Amber tea\\\"}, {\\\"sku\\\": \\\"SKU-405\\\", \\\"name\\\": \\\"Birch chai\\\"}, {\\\"sku\\\": \\\"SKU-118\\\", \\\"name\\\": \\\"Juniper oolong\\\"}, {\\\"sku\\\": \\\"SKU-562\\\", \\\"name\\\": \\\"Smoke lapsang\\\"}]\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": EgLGPKqMqT XDnTegTX 11}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-562\\\", \\\"quantity\\\": 1}\"}],\"isError\":false}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":16,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sku\\\": \\\"SKU-916\\\", \\\"name\\\": \\\"Quartz cocoa\\\", \\\"category\\\": \\\"cocoa\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":17,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"Access Denied to: get_price (service unavailable 503)\"}],\"isError\":true}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price_v2",
+    "args": {
+     "sku": "SKU-731"
+    },
+    "fault": "wrong_type",
+    "persistence": "transient",
+    "outcome": "faulted"
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_products",
+    "args": {
+     "category": "tea"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_stock",
+    "args": {
+     "sku": "SKU-562"
+    },
+    "fault": "random_value",
+    "persistence": "transient",
+    "outcome": "faulted"
+   },
+   {
+    "method": "tools/call",
+    "tool": "place_order",
+    "args": {
+     "sku": "SKU-562",
+     "quantity": 1
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_orders",
+    "args": {},
+    "fault": "drop_call",
+    "persistence": "transient",
+    "outcome": "dropped"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_product",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_price",
+    "args": {
+     "sku": "SKU-916"
+    },
+    "fault": "error",
+    "persistence": "permanent",
+    "outcome": "faulted"
+   }
+  ]
+ },
+ {
+  "stdout": [
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"notes\",\"version\":\"1.0\"}}}\n"
+   ],
+   [],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"put_note\",\"description\":\"Store a note under a key\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"required\":[\"key\",\"value\"]}},{\"name\":\"get_note\",\"description\":\"Read a note\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\"}},\"required\":[\"key\"]}},{\"name\":\"list_notes\",\"description\":\"List note keys\",\"inputSchema\":{\"type\":\"object\",\"properties\":{},\"required\":[]}},{\"name\":\"search_notes\",\"description\":\"Search note text\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"query\":{\"type\":\"string\"}},\"required\":[\"query\"]}}]}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"stored\\\": true, \\\"key\\\": \\\"a\\\"}\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"key\\\": \\\"a\\\", \\\"val\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"[\\\"\"}],\"isError\":false}}\n"
+   ],
+   [
+    "{\"jsonrpc\":\"2.0\",\"id\":\n"
+   ],
+   [
+    "{\"jsonrpc\": \"2.0\", \"id\": 13, \"error\": {\"code\": -32004, \"message\": \"Injected malformed response; retry the call\"}}\n",
+    "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"key\\\": \\\"a\\\", \\\"value\\\": \\\"alpha beta\\\"}\"}],\"isError\":false}}\n"
+   ]
+  ],
+  "log": [
+   {
+    "method": "tools/list",
+    "tool": "__tools_list__",
+    "args": {},
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "put_note",
+    "args": {
+     "key": "a",
+     "value": "alpha beta"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_note",
+    "args": {
+     "key": "a"
+    },
+    "fault": "truncate",
+    "persistence": "transient",
+    "outcome": "faulted"
+   },
+   {
+    "method": "tools/call",
+    "tool": "list_notes",
+    "args": {},
+    "fault": "truncate",
+    "persistence": "transient",
+    "outcome": "faulted"
+   },
+   {
+    "method": "tools/call",
+    "tool": "search_notes",
+    "args": {
+     "query": "beta"
+    },
+    "fault": "malformed_json",
+    "persistence": "transient",
+    "outcome": "faulted"
+   },
+   {
+    "method": "tools/call",
+    "tool": "get_note",
+    "args": {
+     "key": "a"
+    },
+    "fault": null,
+    "persistence": null,
+    "outcome": "ok"
+   }
+  ]
+ }
+]

@@ -1,0 +1,2 @@
+{"ts":1793087506.747231,"run_id":"8b2fed31-1e36-49ba-8202-2a044bc9f7b2","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":7.638799979758915e-05,"outcome":"ok"}
+{"ts":1793087511.5358634,"run_id":"8b2fed31-1e36-49ba-8202-2a044bc9f7b2","method":"tools/call","tool":"list_notes","args":{},"fault":"error","persistence":"permanent","latency":0.0,"outcome":"faulted","draw_index":0,"entry":{"paper_type":"OP4_errorMessage","persistence":"permanent","label":"OP4/permanent"},"fired":true}

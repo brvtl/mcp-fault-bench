@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP Fault Bench</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #0b1018;
+      --panel: #121b27;
+      --line: #29384b;
+      --text: #edf4fb;
+      --muted: #95a7b9;
+      --cyan: #64d9ee;
+      --green: #74dbad;
+      --amber: #ffc46b;
+      --red: #ff7185;
+      --blue: #8eaaff;
+      --clean: #5f82ea;
+      --chaos: #e8506a;
+      --scoped: #b88a1a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at 18% -10%, #1c3b4a 0, transparent 36%),
+        radial-gradient(ellipse at 95% 5%, #24254b 0, transparent 32%), var(--background);
+      color: var(--text);
+      font: 13px/1.4 Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+    main { width: min(1260px, 100%); min-height: 100vh; margin: 0 auto; padding: 16px 22px 12px; }
+    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .mark { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #376575; border-radius: 12px; color: var(--cyan); background: #102b38; font-size: 19px; }
+    h1 { margin: 0; font-size: 23px; letter-spacing: -.6px; }
+    .subtitle { margin: 1px 0 0; color: var(--muted); font-size: 11.5px; }
+    .mode { border: 1px solid #385267; border-radius: 999px; padding: 6px 11px; color: var(--cyan); background: #12212e; font-size: 10.5px; font-weight: 700; letter-spacing: .09em; }
+    .topline { display: flex; gap: 8px; margin-bottom: 11px; }
+    .metric { flex: 1; border: 1px solid var(--line); border-radius: 11px; padding: 7px 12px; background: #101a26cc; }
+    .metric span { display: block; color: var(--muted); font-size: 9.5px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .metric strong { display: block; margin-top: 1px; font-size: 17px; font-variant-numeric: tabular-nums; }
+    .layout { display: grid; grid-template-columns: 1.08fr .92fr; gap: 11px; }
+    .panel { min-width: 0; border: 1px solid var(--line); border-radius: 13px; padding: 11px 14px; background: linear-gradient(145deg, #14202deb, #101823f2); box-shadow: 0 10px 30px #0002; }
+    .panel h2 { display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px; font-size: 13px; }
+    .eyebrow { color: var(--muted); font-size: 9.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th { padding: 4px 5px; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .1em; text-align: left; text-transform: uppercase; }
+    td { padding: 4px 5px; border-top: 1px solid #253345; font-size: 11.5px; white-space: nowrap; }
+    .model-name { color: #dce8f5; font-weight: 650; }
+    .condition { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--clean); }
+    .dot.chaos { background: var(--chaos); }
+    .dot.chaos_scoped { background: var(--scoped); }
+    .success { color: var(--green); font-weight: 700; }
+    .low { color: var(--amber); font-weight: 700; }
+    .ci { color: var(--muted); font-size: 10px; }
+    .chart { display: grid; gap: 9px; }
+    .model-group { display: grid; gap: 3px; }
+    .model-title { display: flex; justify-content: space-between; color: #dce8f5; font-size: 11.5px; font-weight: 650; }
+    .ratios { color: var(--muted); font-weight: 500; font-size: 10.5px; }
+    .bar-row { display: grid; grid-template-columns: 82px 1fr 74px; gap: 8px; align-items: center; font-size: 10.5px; }
+    .bar-label { color: var(--muted); }
+    .track { position: relative; height: 11px; overflow: hidden; border-radius: 4px; background: #243142; }
+    .bar-fill { height: 100%; border-radius: inherit; background: var(--clean); transition: width .4s ease; }
+    .bar-fill.chaos { background: var(--chaos); }
+    .bar-fill.chaos_scoped { background: var(--scoped); }
+    /* shim variants: same hue as the base condition, hatched (identity is never color alone) */
+    .bar-fill.clean_shim, .swatch.shim { background: repeating-linear-gradient(135deg, var(--clean) 0 4px, #5f82ea66 4px 7px); }
+    .bar-fill.chaos_shim { background: repeating-linear-gradient(135deg, var(--chaos) 0 4px, #e8506a66 4px 7px); }
+    .bar-fill.chaos_scoped_shim { background: repeating-linear-gradient(135deg, var(--scoped) 0 4px, #b88a1a66 4px 7px); }
+    .dot.clean_shim, .dot.chaos_shim, .dot.chaos_scoped_shim { background: transparent; border: 2px solid var(--clean); width: 8px; height: 8px; }
+    .dot.chaos_shim { border-color: var(--chaos); }
+    .dot.chaos_scoped_shim { border-color: var(--scoped); }
+    .whisker { position: absolute; top: 50%; height: 2px; background: #edf4fbaa; transform: translateY(-50%); }
+    .bar-value { color: #c8d5e2; text-align: right; font-variant-numeric: tabular-nums; }
+    .legend { display: flex; gap: 12px; margin-top: 8px; color: var(--muted); font-size: 10px; }
+    .legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .legend span[hidden] { display: none; }
+    .swatch { width: 9px; height: 9px; border-radius: 3px; background: var(--clean); }
+    .swatch.chaos { background: var(--chaos); }
+    .swatch.chaos_scoped { background: var(--scoped); }
+    .lanes { display: grid; gap: 6px; }
+    .lane { display: grid; grid-template-columns: 150px minmax(0, 1fr) 26px; align-items: center; gap: 9px; min-height: 28px; }
+    .lane-name { overflow: hidden; color: #dce8f5; font-size: 11px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+    .lane-name small { display: block; color: var(--muted); font-weight: 500; font-size: 9.5px; }
+    .events { display: flex; min-width: 0; gap: 5px; overflow: hidden; justify-content: flex-end; }
+    .event { flex: 0 0 auto; max-width: 160px; overflow: hidden; border: 1px solid #2b3c4e; border-radius: 6px; padding: 3px 6px; background: #192738; color: #c6d5e3; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+    .event.error { border-color: #8a4b56; color: #ffabb5; background: #35212b; }
+    .event.delay { border-color: #8b693c; color: #ffd18a; background: #30291e; }
+    .event.corruption { border-color: #695a9b; color: #c4b8ff; background: #29243e; }
+    .event.extra { border-color: #38727a; color: #91e2eb; background: #193138; }
+    .verdict { font-size: 15px; text-align: center; }
+    .verdict.ok { color: var(--green); }
+    .verdict.fail { color: var(--red); }
+    .scene { margin-bottom: 7px; color: var(--muted); font-size: 10.5px; }
+    .scene b { color: #dce8f5; font-weight: 650; }
+    .empty { color: #77899b; font-size: 11px; }
+    .families td:first-child { color: #dce8f5; font-weight: 600; }
+    footer { display: flex; justify-content: space-between; margin-top: 9px; color: #788b9e; font-size: 10px; }
+    .replay-finished main { display: flex; flex-direction: column; height: 100vh; }
+    .replay-finished .layout { grid-template-columns: 1fr; flex: 1; min-height: 0; }
+    .replay-finished .chart-panel { display: flex; flex-direction: column; }
+    .replay-finished .chart-panel h2 { font-size: 16px; }
+    .replay-finished .chart-panel .eyebrow { font-size: 11px; }
+    .replay-finished .hide-at-end { display: none; }
+    .replay-finished .chart-panel { padding: 18px 26px; }
+    .replay-finished .chart { flex: 1; align-content: space-evenly; gap: 14px; width: 100%; max-width: 1060px; margin: 4px auto 0; }
+    .replay-finished .model-title { font-size: 17px; }
+    .replay-finished .model-group { gap: 7px; }
+    .replay-finished .ratios { font-size: 14px; }
+    .replay-finished .bar-row { grid-template-columns: 150px 1fr 130px; font-size: 15px; }
+    .replay-finished .track { height: 30px; }
+    .replay-finished .legend { justify-content: center; margin-top: 10px; font-size: 13px; }
+    .bar-fill.m0 { background: #2fa37f; } .bar-fill.m1 { background: #a070e0; } .bar-fill.m2 { background: #c06a3a; }
+    .final-note { margin-top: 6px; color: var(--muted); font-size: 14px; text-align: center; }
+    .final-note b { color: #dce8f5; }
+    .bar-fill.dim { opacity: .5; }
+    .replay-finished .legend { flex-direction: column; gap: 4px; }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+      .topline { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main id="app">
+    <header>
+      <div class="brand">
+        <div class="mark" aria-hidden="true">↯</div>
+        <div><h1>MCP Fault Bench</h1><p class="subtitle">Claude Code agent · fault profile and taxonomy from Iannillo et al. 2026 (arXiv 2610.32555)</p></div>
+      </div>
+      <span class="mode" id="mode">RESULTS</span>
+    </header>
+    <section class="topline hide-at-end" id="headline"></section>
+    <div class="layout">
+      <section class="panel hide-at-end">
+        <h2>Run scoreboard <span class="eyebrow">model × condition</span></h2>
+        <table>
+          <thead><tr><th>Model</th><th>Condition</th><th>Runs</th><th>Success</th><th>95% CI</th><th>Retries</th><th>Faults</th></tr></thead>
+          <tbody id="score"></tbody>
+        </table>
+      </section>
+      <section class="panel chart-panel">
+        <h2><span id="chart-title">Task success and resilience</span> <span class="eyebrow" id="chart-note">success rate · Wilson 95% CI</span></h2>
+        <div class="chart" id="chart"></div>
+        <div class="legend" id="chart-legend"><span><i class="swatch"></i>clean (OP0)</span><span><i class="swatch chaos"></i>chaos (paper OPP, global)</span><span><i class="swatch chaos_scoped"></i>chaos_scoped (one target tool)</span><span id="shim-legend" hidden><i class="swatch shim"></i>hatched = + resilience shim</span></div>
+      </section>
+      <section class="panel hide-at-end">
+        <h2>Tool activity <span class="eyebrow" id="lanes-note">recent calls · faults highlighted</span></h2>
+        <div class="scene" id="scene"></div>
+        <div class="lanes" id="lanes"></div>
+      </section>
+      <section class="panel hide-at-end">
+        <h2>Success by first drawn entry <span class="eyebrow">x = chaos · s = scoped</span></h2>
+        <table class="families"><thead id="families-head"></thead><tbody id="families"></tbody></table>
+      </section>
+      <section class="panel hide-at-end">
+        <h2>Winnable subset <span class="eyebrow">first draw ≠ OP4/permanent · Wilson 95% CI</span></h2>
+        <table><thead><tr><th>Model</th><th>Condition</th><th>Reps 1–10</th><th>All reps incl. extension (seed-selected, not paper-faithful)</th></tr></thead><tbody id="winnable"></tbody></table>
+      </section>
+      <section class="panel hide-at-end">
+        <h2>Faulted-only success <span class="eyebrow">runs with ≥1 fault fired · reps 1–10 · Wilson 95% CI</span></h2>
+        <table><thead><tr><th>Model</th><th>One target tool</th><th>All tools (chaos)</th></tr></thead><tbody id="faulted"></tbody></table>
+        <p class="scene" id="mcnemar"></p>
+      </section>
+      <section class="panel hide-at-end">
+        <h2>Resilience shim <span class="eyebrow">pre-registered primary · faulted one-tool pairs · exact McNemar</span></h2>
+        <table><thead><tr><th>Model</th><th>No shim</th><th>Shim</th><th>b / c</th><th>p</th><th>Bonf ×3</th></tr></thead><tbody id="shim-primary"></tbody></table>
+      </section>
+    </div>
+    <footer><span>Data: results/summary.json + results/runs.jsonl · no external assets</span><span id="status">Waiting for arena data</span></footer>
+  </main>
+  <script>
+    const CONDITIONS = ["clean", "chaos", "chaos_scoped"];  // headline
+    const SHIM_CONDITIONS = ["clean_shim", "chaos_shim", "chaos_scoped_shim"];
+    const HEADLINE_REPS = 10;  // reps 1..10 are the paper-weighted headline; rep-file extension reps are excluded
+    const query = new URLSearchParams(location.search);
+    const replay = query.has("replay");
+    const playbackRate = Math.max(0.25, Number(query.get("speed") || 1));
+    const REPLAY_MS = 24000 / playbackRate;
+    const PLAY_MS = REPLAY_MS * 0.76;   // scenes; the rest shows the final faulted-only chart
+    const byId = (id) => document.getElementById(id);
+    const escape = (text) => String(text ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+    const pct = (value) => value == null ? "—" : `${Math.round(value * 100)}%`;
+    let state = null;
+
+    byId("mode").textContent = replay ? "REPLAY OF RECORDED RUNS" : "RESULTS";
+
+    // Static badge: run count and the date of the last recorded run (row finished_at, else latest proxy event).
+    function renderBadge(rows) {
+      if (replay) return;
+      const stamps = rows.map((row) => row.finished_at ? Date.parse(row.finished_at)
+        : Math.max(0, ...(row.events || []).map((event) => (event.ts || 0) * 1000))).filter((value) => value > 0);
+      const last = stamps.length ? new Date(Math.max(...stamps)).toISOString().slice(0, 10) : "n/a";
+      byId("mode").textContent = `RESULTS · ${rows.length} RUNS · ${last}`;
+    }
+
+    async function fetchData(endpoint) {
+      try {
+        const response = await fetch(`${endpoint}?t=${Date.now()}`);
+        return response.ok ? await response.json() : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function wilson(successes, n) {
+      if (!n) return null;
+      const z = 1.96, p = successes / n, d = 1 + z * z / n;
+      const centre = (p + z * z / (2 * n)) / d;
+      const half = z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d;
+      return [Math.max(0, centre - half), Math.min(1, centre + half)];
+    }
+
+    // Same aggregation as bench/arena.py summarize(), used while the replay reveals rows.
+    function summarize(allRows) {
+      const rows = allRows.filter((row) => Number(row.rep) >= 1 && Number(row.rep) <= HEADLINE_REPS);
+      const models = [...new Set(allRows.map((row) => row.model))].sort();
+      const conditions = CONDITIONS.filter((condition) => rows.some((row) => row.condition === condition));
+      const shimConditions = SHIM_CONDITIONS.filter((condition) => allRows.some((row) => row.condition === condition));
+      const mean = (group, key) => group.length ? group.reduce((sum, row) => sum + (Number(row[key]) || 0), 0) / group.length : 0;
+      const families = {};
+      rows.filter((row) => row.condition === "chaos" || row.condition === "chaos_scoped").forEach((row) => {
+        const keys = [row.first_entry || "no draw (target not called)"].concat(row.faults ? [] : ["zero_dose"]);
+        keys.forEach((key) => {
+          const cell = ((families[row.condition] ||= {})[key] ||= {})[row.model] ||= { n: 0, successes: 0 };
+          cell.n += 1; cell.successes += row.success ? 1 : 0;
+        });
+      });
+      const cellFor = (model, condition) => {
+        const group = rows.filter((row) => row.model === model && row.condition === condition);
+        const successes = group.filter((row) => row.success).length;
+        return { n: group.length, successes, success_rate: group.length ? successes / group.length : null,
+          ci95: wilson(successes, group.length), mean_retries: mean(group, "retries"), mean_faults_fired: mean(group, "faults") };
+      };
+      return { conditions, shim_conditions: shimConditions, fault_families: families, models: models.map((model) => {
+        const cells = {}, shimCells = {};
+        conditions.forEach((condition) => { cells[condition] = cellFor(model, condition); });
+        shimConditions.forEach((condition) => { const cell = cellFor(model, condition); if (cell.n) shimCells[condition] = cell; });
+        const clean = cells.clean?.success_rate;
+        const ratio = (condition) => clean && cells[condition]?.success_rate != null ? cells[condition].success_rate / clean : null;
+        return { model, conditions: cells, shim_conditions: shimCells, resilience_ratio: ratio("chaos"),
+          scoped_resilience_ratio: ratio("chaos_scoped") };
+      }) };
+    }
+
+    // Headline conditions first, then the shim variants (reps 1..10 for both).
+    const allCells = (summary, model) => [...summary.conditions.map((condition) => [condition, model.conditions[condition]]),
+      ...(summary.shim_conditions || []).map((condition) => [condition, (model.shim_conditions || {})[condition]])]
+      .filter(([, cell]) => cell && cell.n);
+
+    function renderHeadline(rows) {
+      const successes = rows.filter((row) => row.success).length;
+      const faults = rows.reduce((sum, row) => sum + (row.faults || 0), 0);
+      const retries = rows.reduce((sum, row) => sum + (row.retries || 0), 0);
+      const timeouts = rows.filter((row) => row.outcome === "timeout").length;
+      byId("headline").innerHTML = [["Runs", rows.length], ["Tasks passed", `${successes}/${rows.length}`],
+        ["Faults fired", faults], ["Retries", retries], ["Timeouts", timeouts]]
+        .map(([label, value]) => `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`).join("");
+    }
+
+    function renderScoreboard(summary) {
+      byId("score").innerHTML = summary.models.flatMap((model) => allCells(summary, model).map(([condition, cell]) => {
+        const rate = cell.success_rate;
+        const ci = cell.ci95 ? `${pct(cell.ci95[0])}–${pct(cell.ci95[1])}` : "—";
+        return `<tr><td class="model-name">${escape(model.model)}</td>
+          <td><span class="condition"><i class="dot ${condition}"></i>${condition}</span></td>
+          <td>${cell.n}</td><td class="${rate >= .5 ? "success" : "low"}">${pct(rate)}</td><td class="ci">${ci}</td>
+          <td>${(cell.mean_retries || 0).toFixed(2)}</td><td>${(cell.mean_faults_fired || 0).toFixed(2)}</td></tr>`;
+      })).join("");
+    }
+
+    function renderChart(summary) {
+      byId("chart").innerHTML = summary.models.map((model) => {
+        const ratio = (value) => value == null ? "—" : value.toFixed(2);
+        const bars = allCells(summary, model).map(([condition, cell]) => {
+          const width = Math.max(0, Math.min(100, (cell.success_rate || 0) * 100));
+          const whisker = cell.ci95 ? `<i class="whisker" style="left:${cell.ci95[0] * 100}%;width:${(cell.ci95[1] - cell.ci95[0]) * 100}%"></i>` : "";
+          return `<div class="bar-row"><span class="bar-label">${condition.replace("_shim", " + shim")}</span>
+            <div class="track"><div class="bar-fill ${condition}" style="width:${width}%"></div>${whisker}</div>
+            <span class="bar-value">${pct(cell.success_rate)} (${cell.successes}/${cell.n})</span></div>`;
+        }).join("");
+        return `<div class="model-group"><div class="model-title"><span>${escape(model.model)}</span>
+          <span class="ratios">resilience ${ratio(model.resilience_ratio)} · scoped ${ratio(model.scoped_resilience_ratio)}</span></div>${bars}</div>`;
+      }).join("") || '<span class="empty">No runs yet.</span>';
+      byId("shim-legend").hidden = !(summary.shim_conditions || []).length;
+    }
+
+    const ciText = (cell) => cell && cell.n ? `${cell.successes}/${cell.n} · ${pct(cell.success_rate)} <span class="ci">${pct(cell.ci95[0])}–${pct(cell.ci95[1])}</span>` : "—";
+
+    function renderWinnable(summary) {
+      const conditions = summary.winnable?.conditions || {};
+      byId("winnable").innerHTML = summary.models.flatMap((model) => Object.keys(conditions).map((condition) => {
+        const cell = conditions[condition][model.model];
+        return cell ? `<tr><td class="model-name">${escape(model.model)}</td><td><span class="condition"><i class="dot ${condition}"></i>${condition}</span></td>
+          <td>${ciText(cell.headline)}</td><td>${ciText(cell.all)}</td></tr>` : "";
+      })).join("") || '<tr><td colspan="4" class="empty">From summary.json once chaos runs exist.</td></tr>';
+    }
+
+    const MODEL_ORDER = ["claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-5-5"];  // as bench/arena.py _model_order
+    const ordered = (models) => [...MODEL_ORDER.filter((m) => models.includes(m)), ...models.filter((m) => !MODEL_ORDER.includes(m)).sort()];
+    const short = (model) => model.replace(/^claude-/, "").replace(/-5-5$/, "");
+    const pText = (p) => p == null ? "—" : p < 0.001 ? "<0.001" : p.toFixed(3);
+
+    // summary.faulted_only (bench/arena.py faulted_only); while the replay has no summary, the same rule over rows:
+    // reps 1..10, faults > 0.
+    function faultedCells(summary, rows) {
+      if (summary.faulted_only?.conditions) return summary.faulted_only.conditions;
+      const table = {};
+      rows.filter((row) => Number(row.rep) >= 1 && Number(row.rep) <= HEADLINE_REPS && row.faults > 0
+        && (row.condition === "chaos" || row.condition === "chaos_scoped")).forEach((row) => {
+        const cell = ((table[row.condition] ||= {})[row.model] ||= { n: 0, successes: 0 });
+        cell.n += 1; cell.successes += row.success ? 1 : 0;
+      });
+      Object.values(table).forEach((perModel) => Object.values(perModel).forEach((cell) => {
+        cell.success_rate = cell.successes / cell.n; cell.ci95 = wilson(cell.successes, cell.n);
+      }));
+      return table;
+    }
+
+    function renderFaulted(summary, rows) {
+      const table = faultedCells(summary, rows);
+      const models = ordered([...new Set(Object.values(table).flatMap((perModel) => Object.keys(perModel)))]);
+      byId("faulted").innerHTML = models.map((model) => `<tr><td class="model-name">${escape(model)}</td>
+        <td>${ciText(table.chaos_scoped?.[model])}</td><td>${ciText(table.chaos?.[model])}</td></tr>`).join("")
+        || '<tr><td colspan="3" class="empty">From summary.json once chaos runs exist.</td></tr>';
+      const test = (summary.between_model_mcnemar?.conditions?.chaos_scoped || [])
+        .find((item) => item.scope === "all" && item.model_a === MODEL_ORDER[0] && item.model_b === MODEL_ORDER[1]);
+      byId("mcnemar").innerHTML = test ? `<b>${short(test.model_a)} vs ${short(test.model_b)}</b>, one tool: ${test.b} vs ${test.c} discordant pairs · exact McNemar p = ${pText(test.p)} · Bonferroni ×3 p = ${pText(test.p_bonferroni_3)} (3 model pairs)` : "";
+    }
+
+    function renderShimPrimary(summary) {
+      const comparison = (summary.shim_analysis?.comparisons || []).find((item) => item.base === "chaos_scoped");
+      byId("shim-primary").innerHTML = Object.entries(comparison?.models || {}).map(([model, block]) => {
+        const cell = block.primary, ok = cell.status === "ok";
+        const base = ok ? `${cell.base_successes}/${cell.n_pairs}` : `${cell.baseline_successes}/${cell.baseline_n}`;
+        return `<tr><td class="model-name">${escape(model)}</td><td>${base}</td><td>${ok ? `${cell.shim_successes}/${cell.n_pairs}` : "pending"}</td>
+          <td>${ok ? `${cell.b} / ${cell.c}` : "pending"}</td><td>${ok ? pText(cell.p) : "pending"}</td><td>${ok ? pText(cell.p_bonferroni_3) : "pending"}</td></tr>`;
+      }).join("") || '<tr><td colspan="6" class="empty">pending (no shim runs yet)</td></tr>';
+    }
+
+    // Final replay frame: faulted-only success per model (k/n, Wilson 95% CI), one target tool and all tools,
+    // plus the pre-registered shim result on the same faulted one-tool pairs, all from summary.json.
+    function renderFinal(summary, rows) {
+      const table = faultedCells(summary, rows);
+      const cells = table.chaos_scoped || {};
+      byId("chart-title").textContent = "Faulted-only success";
+      byId("chart-note").textContent = "runs where ≥1 fault fired · paper fault profile · reps 1–10 · Wilson 95% CI";
+      const bar = (cell, label, index, extra) => {
+        if (!cell) return "";
+        const whisker = cell.ci95 ? `<i class="whisker" style="left:${cell.ci95[0] * 100}%;width:${(cell.ci95[1] - cell.ci95[0]) * 100}%"></i>` : "";
+        return `<div class="bar-row"><span class="bar-label">${label}</span><div class="track"><div class="bar-fill m${index % 3} ${extra}" style="width:${(cell.success_rate || 0) * 100}%"></div>${whisker}</div>
+          <span class="bar-value">${pct(cell.success_rate)} (${cell.successes}/${cell.n})</span></div>`;
+      };
+      byId("chart").innerHTML = ordered(Object.keys(cells)).map((model, index) => `<div class="model-group">
+          <div class="model-title"><span>${escape(model)}</span><span class="ratios">faulted-only</span></div>
+          ${bar(cells[model], "one target tool", index, "")}${bar(table.chaos?.[model], "all tools", index, "dim")}</div>`).join("")
+        || '<span class="empty">No faulted one-tool runs.</span>';
+      const comparison = (summary.shim_analysis?.comparisons || []).find((item) => item.base === "chaos_scoped");
+      const shim = Object.entries(comparison?.models || {}).filter(([, block]) => block.primary?.status === "ok")
+        .map(([model, block]) => `${short(model)} ${block.primary.base_successes} → ${block.primary.shim_successes}/${block.primary.n_pairs}`).join(" · ");
+      byId("chart-legend").innerHTML = `<div class="final-note">${byId("mcnemar").innerHTML || ""}</div>`
+        + (shim ? `<div class="final-note"><b>Resilience shim</b> (error names a fallback tool), same faulted one-tool pairs: ${shim}</div>` : "");
+    }
+
+    function renderFamilies(summary) {
+      const models = summary.models.map((model) => model.model);
+      const families = summary.fault_families || {};
+      const keys = [...new Set(Object.values(families).flatMap((groups) => Object.keys(groups)))]
+        .sort((a, b) => (a === "zero_dose") - (b === "zero_dose") || a.localeCompare(b));
+      byId("families-head").innerHTML = `<tr><th>First entry</th>${models.map((model) => `<th>${escape(model)}</th>`).join("")}</tr>`;
+      const cell = (condition, key, model) => {
+        const value = families[condition]?.[key]?.[model];
+        return value ? `${condition === "chaos" ? "x" : "s"} ${value.successes}/${value.n}` : "";
+      };
+      byId("families").innerHTML = keys.slice(0, 9).map((key) => `<tr><td>${key === "zero_dose" ? "no fault fired" : escape(key)}</td>${
+        models.map((model) => `<td>${[cell("chaos", key, model), cell("chaos_scoped", key, model)].filter(Boolean).join(" · ") || "—"}</td>`).join("")}</tr>`)
+        .join("") || `<tr><td colspan="${models.length + 1}" class="empty">No chaos runs yet.</td></tr>`;
+    }
+
+    const faultClass = (operation) => {
+      if (["error", "timeout", "drop_call"].includes(operation)) return "error";
+      if (operation === "delay") return "delay";
+      if (["small_delta", "random_value", "wrong_type"].includes(operation)) return "corruption";
+      return operation ? "extra" : "";
+    };
+
+    function renderLanes(lanes) {
+      byId("lanes").innerHTML = lanes.map((lane) => {
+        const chips = lane.events.slice(-7).map((event) => {
+          const label = event.fault ? `${event.tool} · ${event.fault}` : event.tool;
+          return `<span class="event ${faultClass(event.fault)}" title="${escape(label)}">${escape(label)}</span>`;
+        }).join("") || '<span class="empty">waiting for tool calls…</span>';
+        const verdict = lane.done == null ? "" : `<span class="verdict ${lane.done ? "ok" : "fail"}">${lane.done ? "✓" : "✗"}</span>`;
+        return `<div class="lane"><div class="lane-name">${escape(lane.name)}<small>${escape(lane.detail || "")}</small></div>
+          <div class="events">${chips}</div>${verdict || "<span></span>"}</div>`;
+      }).join("") || '<span class="empty">Waiting for tool calls…</span>';
+    }
+
+    function render(rows, summary, lanes, scene) {
+      renderHeadline(rows);
+      renderScoreboard(summary);
+      renderChart(summary);
+      renderFamilies(summary);
+      renderWinnable(summary);
+      renderShimPrimary(summary);
+      renderFaulted(summary, rows);
+      renderLanes(lanes);
+      byId("scene").innerHTML = scene || "";
+    }
+
+    const callEvents = (row) => (row.events || []).filter((event) => event.method !== "tools/list" && event.layer !== "shim")
+      .sort((a, b) => (a.ts || 0) - (b.ts || 0));
+
+    // Replay scenes: one chaos (task, rep) at a time, one lane per model. Every model got the same
+    // seed for that (task, rep), so the lanes show the same fault draw.
+    function buildScenes(rows) {
+      const models = [...new Set(rows.map((row) => row.model))].sort();
+      const groups = new Map();
+      rows.filter((row) => row.condition === "chaos" && Number(row.rep) <= HEADLINE_REPS).forEach((row) => {
+        const key = `${row.task}#${row.rep}`;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(row);
+      });
+      const scored = [...groups.values()].filter((group) => group.length === models.length).map((group) => {
+        const outcomes = new Set(group.map((row) => row.success)).size;
+        const fired = group.reduce((sum, row) => sum + (row.faults || 0), 0);
+        return { group, score: outcomes * 100 + Math.min(fired, 50) + new Set(group.map((r) => r.first_entry)).size };
+      }).sort((a, b) => b.score - a.score);
+      const picked = [];
+      const families = new Set();
+      scored.forEach(({ group }) => {  // prefer distinct first entries across scenes
+        if (picked.length < 3 && !families.has(group[0].first_entry)) { picked.push(group); families.add(group[0].first_entry); }
+      });
+      scored.forEach(({ group }) => { if (picked.length < 3 && !picked.includes(group)) picked.push(group); });
+      return picked.map((group) => group.sort((a, b) => a.model.localeCompare(b.model)));
+    }
+
+    function replayFrame() {
+      const { rows, summary, scenes, started } = state;
+      const elapsed = performance.now() - started;
+      if (elapsed >= PLAY_MS || !scenes.length && elapsed >= PLAY_MS * 0.3) {
+        if (!document.body.classList.contains("replay-finished")) {
+          document.body.classList.add("replay-finished");
+          const final = summary.models ? summary : summarize(rows);
+          render(rows, final, [], "");
+          renderFinal(final, rows);
+          byId("status").textContent = "Replay complete · faulted-only success";
+        }
+        return;
+      }
+      const revealed = rows.slice(0, Math.ceil(rows.length * elapsed / PLAY_MS));
+      let lanes = [], scene = "";
+      if (scenes.length) {
+        const sceneMs = PLAY_MS / scenes.length;
+        const index = Math.min(scenes.length - 1, Math.floor(elapsed / sceneMs));
+        const local = (elapsed - index * sceneMs) / (sceneMs * 0.85);
+        const group = scenes[index];
+        const span = Math.max(...group.map((row) => Number(row.wall_time) || 1));
+        lanes = group.map((row) => {
+          const events = callEvents(row);
+          const start = events.length ? events[0].ts : 0;
+          const cutoff = Math.min(1, local) * span;
+          return { name: row.model, detail: row.first_entry ? `draw ${row.first_entry}` : "no draw",
+            events: events.filter((event) => (event.ts - start) <= cutoff),
+            done: local >= 1 || cutoff >= (Number(row.wall_time) || 0) ? Boolean(row.success) : null };
+        });
+        const row = group[0];
+        scene = `Scene ${index + 1}/${scenes.length} · <b>${escape(row.task)}</b> rep ${row.rep} · chaos · seed <b>${escape(row.seed)}</b> · same draw for every model`;
+      }
+      render(revealed, summarize(revealed), lanes, scene);
+      byId("status").textContent = `${revealed.length}/${rows.length} runs replayed`;
+    }
+
+    async function tick() {
+      if (replay && state) { replayFrame(); return; }
+      const [rows, summary] = await Promise.all([fetchData("/api/runs"), fetchData("/api/summary")]);
+      if (!rows) return;
+      if (replay) {
+        state = { rows, summary: summary || {}, scenes: buildScenes(rows), started: performance.now() };
+        replayFrame();
+        return;
+      }
+      const current = summary && summary.models ? summary : summarize(rows);
+      const recent = [...rows].sort((a, b) => (callEvents(b).at(-1)?.ts || 0) - (callEvents(a).at(-1)?.ts || 0)).slice(0, 6);
+      const lanes = recent.map((row) => ({ name: `${row.model}`, detail: `${row.task} · ${row.condition} · r${row.rep}`,
+        events: callEvents(row), done: Boolean(row.success) }));
+      render(rows, current, lanes, "");
+      renderBadge(rows);
+      byId("status").textContent = `${rows.length} run records loaded`;
+    }
+
+    tick();
+    window.setInterval(tick, replay ? 120 : 1500);
+  </script>
+</body>
+</html>

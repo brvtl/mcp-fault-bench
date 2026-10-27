@@ -1,0 +1,76 @@
+cff-version: 1.2.0
+message: "If you use MCP-Injector, the calibrated fault profile, or the released campaign data, please cite the paper (see preferred-citation) and, where you need to pin an exact artifact snapshot, the archived software record."
+title: "MCP-Injector: protocol-level fault injection for tool-calling LLM agents"
+abstract: "A protocol-aware, drop-in fault-injection middleware for the Model Context Protocol (MCP), together with a fault profile calibrated to the observed incident distribution of the public MCP ecosystem, the campaign runners for a 1,350-cell evaluation across three agent stacks, and the analysis pipeline that produced the figures and tables of the paper."
+type: software
+# Author order matches \author{} in the paper source. Keep the two in sync.
+# Optional but recommended: add an `orcid:` line per author, e.g.
+#   orcid: "https://orcid.org/0000-0002-1825-0097"
+authors:
+  - family-names: "Iannillo"
+    given-names: "Antonio Ken"
+    affiliation: "Interdisciplinary Centre for Security, Reliability and Trust (SnT), University of Luxembourg"
+  - family-names: "Owotogbe"
+    given-names: "Joshua Segun"
+    affiliation: "Tilburg University"
+  - family-names: "Natella"
+    given-names: "Roberto"
+    affiliation: "Gran Sasso Science Institute"
+  - family-names: "Avallone"
+    given-names: "Francesco"
+    affiliation: "University of Naples Federico II"
+  - family-names: "Kudryavtseva"
+    given-names: "Kristina"
+    affiliation: "Interdisciplinary Centre for Security, Reliability and Trust (SnT), University of Luxembourg"
+  - family-names: "Kumara"
+    given-names: "Indika"
+    affiliation: "Tilburg University"
+repository-code: "https://gitlab.com/uniluxembourg/snt/sedan/papers/mcp-injector"
+license:
+  - Apache-2.0
+  - CC-BY-4.0
+version: "1.0-neurips2026"
+date-released: "2026-10-22"
+doi: "10.5281/zenodo.23573765"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23573765"
+    description: "Archived snapshot of the v1.0-neurips2026 release."
+  - type: url
+    value: "https://openreview.net/forum?id=ZfMdoPBhn0"
+    description: "OpenReview page for the accompanying paper."
+keywords:
+  - "Model Context Protocol"
+  - "MCP"
+  - "fault injection"
+  - "LLM agents"
+  - "tool calling"
+  - "dependability"
+  - "chaos engineering"
+preferred-citation:
+  type: conference-paper
+  title: "Tool-Calling LLM Agents Under Realistic MCP Faults: Scale Does Not Purchase Fault Tolerance"
+  authors:
+    - family-names: "Iannillo"
+      given-names: "Antonio Ken"
+      affiliation: "Interdisciplinary Centre for Security, Reliability and Trust (SnT), University of Luxembourg"
+    - family-names: "Owotogbe"
+      given-names: "Joshua Segun"
+      affiliation: "Tilburg University"
+    - family-names: "Natella"
+      given-names: "Roberto"
+      affiliation: "Gran Sasso Science Institute"
+    - family-names: "Avallone"
+      given-names: "Francesco"
+      affiliation: "University of Naples Federico II"
+    - family-names: "Kudryavtseva"
+      given-names: "Kristina"
+      affiliation: "Interdisciplinary Centre for Security, Reliability and Trust (SnT), University of Luxembourg"
+    - family-names: "Kumara"
+      given-names: "Indika"
+      affiliation: "Tilburg University"
+  collection-title: "Advances in Neural Information Processing Systems 39 (NeurIPS 2026)"
+  conference:
+    name: "Thirty-Ninth Conference on Neural Information Processing Systems"
+  year: 2026
+  url: "https://openreview.net/forum?id=ZfMdoPBhn0"

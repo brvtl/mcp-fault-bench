@@ -1,0 +1,5 @@
+{"ts":1793086249.0819788,"run_id":"d331a927-d372-4992-8e2a-6dd71ede1c53","method":"tools/list","tool":"__tools_list__","args":{},"fault":null,"persistence":null,"latency":0.0004302200013626134,"outcome":"ok"}
+{"ts":1793086251.0174584,"run_id":"d331a927-d372-4992-8e2a-6dd71ede1c53","method":"tools/call","tool":"get_price","args":{"sku":"SKU-639"},"fault":null,"persistence":null,"latency":0.0004911279993393691,"outcome":"ok"}
+{"ts":1793086252.8575058,"run_id":"d331a927-d372-4992-8e2a-6dd71ede1c53","method":"tools/call","tool":"get_price","args":{"sku":"SKU-916"},"fault":null,"persistence":null,"latency":0.000558699999601231,"outcome":"ok"}
+{"ts":1793086252.8636134,"run_id":"d331a927-d372-4992-8e2a-6dd71ede1c53","method":"tools/call","tool":"get_price","args":{"sku":"SKU-994"},"fault":null,"persistence":null,"latency":0.0005115050007589161,"outcome":"ok"}
+{"ts":1793086252.8749816,"run_id":"d331a927-d372-4992-8e2a-6dd71ede1c53","method":"tools/call","tool":"get_price","args":{"sku":"SKU-473"},"fault":null,"persistence":null,"latency":0.000176634001036291,"outcome":"ok"}

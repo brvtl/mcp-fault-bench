@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:cross_server_total:20",
+        "--target",
+        "get_note",
+        "--log",
+        "./results/runs/cross_server_total-claude-opus-5-5-chaos_scoped-r20-513c7ffd/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-opus-5-5-chaos_scoped-r20-513c7ffd/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/paper_opp_scoped.yaml",
+        "--seed",
+        "42:cross_server_total:20",
+        "--target",
+        "get_note",
+        "--log",
+        "./results/runs/cross_server_total-claude-opus-5-5-chaos_scoped-r20-513c7ffd/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/cross_server_total-claude-opus-5-5-chaos_scoped-r20-513c7ffd/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

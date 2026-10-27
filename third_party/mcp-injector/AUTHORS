@@ -1,0 +1,25 @@
+MCP-Injector Authors
+====================
+
+This file lists the copyright holders of the original contributions in this
+repository, in the author order of the accompanying paper:
+
+  Tool-Calling LLM Agents Under Realistic MCP Faults:
+  Scale Does Not Purchase Fault Tolerance
+  Advances in Neural Information Processing Systems 39 (NeurIPS 2026)
+  https://openreview.net/forum?id=ZfMdoPBhn0
+
+  Antonio Ken Iannillo    SnT, University of Luxembourg (corresponding author)
+  Joshua Segun Owotogbe   Tilburg University
+  Roberto Natella         Gran Sasso Science Institute
+  Francesco Avallone      University of Naples Federico II
+  Kristina Kudryavtseva   SnT, University of Luxembourg
+  Indika Kumara           Tilburg University
+
+Per-file SPDX headers read "Copyright 2026 The MCP-Injector Authors (see
+AUTHORS)" and refer to the list above.
+
+Portions of this repository are derived from MCP-Bench
+(https://github.com/accenture/mcp-bench) and remain copyright their respective
+authors. See NOTICE for the upstream attribution and LICENSES-README.md for the
+path-by-path license map.

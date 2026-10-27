@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "notes": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:restock_cost:5",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/restock_cost-claude-sonnet-5-5-clean_shim-r5-c9062211/notes-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.notes"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-sonnet-5-5-clean_shim-r5-c9062211/notes.json",
+        "PYTHONPATH": "."
+      }
+    },
+    "inventory": {
+      "type": "stdio",
+      "command": "./.venv/bin/python",
+      "args": [
+        "-m",
+        "chaosmonkey",
+        "proxy",
+        "--schedule",
+        "./profiles/empty.yaml",
+        "--seed",
+        "42:restock_cost:5",
+        "--shim",
+        "./profiles/shim.yaml",
+        "--log",
+        "./results/runs/restock_cost-claude-sonnet-5-5-clean_shim-r5-c9062211/inventory-proxy.jsonl",
+        "--",
+        "./.venv/bin/python",
+        "-m",
+        "servers.inventory"
+      ],
+      "env": {
+        "CHAOS_STATE_FILE": "./results/runs/restock_cost-claude-sonnet-5-5-clean_shim-r5-c9062211/inventory.json",
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

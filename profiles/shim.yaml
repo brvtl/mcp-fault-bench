@@ -1,0 +1,19 @@
+# Resilience shim, classify mode (pre-registered in docs/preregistration-shim.md). Used by
+# `python -m mcp_fault_bench proxy --shim profiles/shim.yaml` and the *_shim arena conditions.
+# Placement: agent -> shim -> fault injector -> server. Every agent call is forwarded exactly once and unchanged;
+# the shim only rewrites the error text the agent receives (PERMANENT classification). The retry-mode config of
+# round 2 is profiles/shim_retry.yaml.
+mode: classify
+retry: {max_retries: 0}        # no retries: each agent call is forwarded exactly once
+attempt_timeout_s: 35          # no response within 35 s: UNRESPONSIVE, treated as PERMANENT; a late response is dropped
+non_idempotent: [place_order]  # the PERMANENT text adds an order hint
+verify_with: {place_order: list_orders}  # named in that hint
+validate: "off"                # no output validation
+# Real alternative tools, named in the PERMANENT text. Written in round 2 from tool documentation, before any shim run.
+fallbacks:
+  get_price: [get_price_v2]
+  get_price_v2: [get_price]
+  get_note: [search_notes, list_notes]
+  search_notes: [get_note]
+  list_notes: [search_notes]
+  get_product: [search_products]
