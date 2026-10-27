@@ -53,7 +53,8 @@ def _parser() -> argparse.ArgumentParser:
     arena.add_argument("--seed", default="42")
     arena.add_argument("--effort", default="medium")
     arena.add_argument("--results-file", default="results/runs.jsonl",
-                       help="resume from and append to this file; only the default updates results/summary.*")
+                       help="resume from and append to this file (run artifacts go to runs/ beside it); "
+                            "only the default updates results/summary.*")
 
     commands.add_parser("summarize", help="rewrite results/summary.* from results/runs.jsonl")
 

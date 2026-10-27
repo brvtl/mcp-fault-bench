@@ -227,7 +227,7 @@ def test_run_arena_results_file_keeps_default_results_and_summary(tmp_path, monk
     custom.write_text(json.dumps(done) + "\n")
     calls = []
 
-    def fake_run_one(task, model, condition, rep, seed, effort, run_cap, adapter=None):
+    def fake_run_one(task, model, condition, rep, seed, effort, run_cap, adapter=None, runs_dir=None):
         calls.append(rep)
         row = {**done, "adapter": adapter.name, "id": f"r{rep}", "rep": rep, "seed": f"{seed}:{task['id']}:{rep}", "target_tool": None,
                "outcome": "ok" if rep == 2 else "harness_error", "success": rep == 2, "tool_calls": 1, "faults": 0,
@@ -246,3 +246,42 @@ def test_run_arena_results_file_keeps_default_results_and_summary(tmp_path, monk
     assert (results / "summary.json").read_text() == "{}" and (results / "summary.md").read_text() == "# old"
     assert not (results / "harness_errors.jsonl").exists()
     assert arena.result_paths("results/runs.jsonl") == (results / "runs.jsonl", results / "harness_errors.jsonl", True)
+
+
+def test_score_run_outside_root_keeps_absolute_artifact_dir(tmp_path, monkeypatch):
+    monkeypatch.setattr(arena, "ROOT", tmp_path / "repo")
+    row = _score(tmp_path, _stream([("mcp__inventory__get_price", False)]))
+    assert row["artifact_dir"] == str(tmp_path / "run-1")
+
+
+def test_run_arena_outside_results_file_leaves_checkout_clean(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    root = tmp_path / "repo"
+    results = root / "results"
+    results.mkdir(parents=True)
+    (root / "bench").mkdir()
+    (root / "bench" / "tasks.yaml").write_text(json.dumps({"tasks": [{"id": "price_total"}]}))
+    monkeypatch.setattr(arena, "ROOT", root)
+    monkeypatch.setattr(arena, "RESULTS", results)
+    monkeypatch.setattr(arena, "RUNS", results / "runs")
+    scratch = tmp_path / "scratch"
+    runs_dirs = []
+
+    def fake_run_one(task, model, condition, rep, seed, effort, run_cap, adapter=None, runs_dir=None):
+        runs_dirs.append(runs_dir)
+        artifact_dir = runs_dir / f"r{rep}"
+        artifact_dir.mkdir(parents=True)
+        return {"id": f"r{rep}", "task": task["id"], "model": model, "condition": condition, "rep": rep,
+                "effort": effort, "adapter": adapter.name, "seed": f"{seed}:{task['id']}:{rep}", "target_tool": None,
+                "outcome": "ok" if rep == 1 else "harness_error", "success": rep == 1, "tool_calls": 1, "faults": 0,
+                "first_entry": None, "wall_time": 1.0, "artifact_dir": str(artifact_dir)}
+
+    monkeypatch.setattr(arena, "run_one", fake_run_one)
+    args = SimpleNamespace(task_file="bench/tasks.yaml", tasks=None, models="claude-opus-5-5", conditions="chaos",
+                           reps=2, rep_range=None, rep_file=None, only_file=None, run_cap=600, parallel=1, seed="42",
+                           effort="medium", results_file=str(scratch / "smoke.jsonl"))
+    assert arena.run_arena(args) == 0
+    assert runs_dirs == [scratch / "runs", scratch / "runs"]
+    assert (scratch / "runs" / "r1").is_dir() and not (scratch / "runs" / "r2").exists()
+    assert json.loads((scratch / "smoke.harness_errors.jsonl").read_text())["rep"] == 2
+    assert list(results.iterdir()) == []

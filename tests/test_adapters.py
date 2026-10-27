@@ -140,7 +140,7 @@ def test_run_arena_passes_the_adapter_and_resumes_per_adapter(tmp_path, monkeypa
     round_file.write_text(json.dumps(legacy) + "\n")
     seen = []
 
-    def fake_run_one(task, model, condition, rep, seed, effort, run_cap, adapter=None):
+    def fake_run_one(task, model, condition, rep, seed, effort, run_cap, adapter=None, runs_dir=None):
         seen.append((adapter.name, model, rep))
         return {**legacy, "id": f"r{rep}", "rep": rep, "adapter": adapter.name, "outcome": "ok", "success": True,
                 "tool_calls": 1, "faults": 0, "first_entry": None, "wall_time": 1.0, "artifact_dir": "x"}
